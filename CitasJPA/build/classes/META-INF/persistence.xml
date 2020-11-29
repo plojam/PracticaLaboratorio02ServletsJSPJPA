@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+	<persistence-unit name="CitasJPA" transaction-type="RESOURCE_LOCAL">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<class>ec.edu.ups.modelo.Empresa</class>
+		<class>ec.edu.ups.modelo.Producto</class>
+		<class>ec.edu.ups.modelo.Categoria</class>
+		<class>ec.edu.ups.modelo.Usuario</class>
+		<class>ec.edu.ups.modelo.Cabecera</class>
+		<class>ec.edu.ups.modelo.Detalle</class>
+		<properties>
+			<property name="eclipselink.ddl-generation" value="create-tables"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/pedidosjpa?serverTimezone=UTC"/>
+			<!--property name="javax.persistence.jdbc.url" value="jdbc:mysql://mysql://127.0.0.1:3307/pedidosjpa?serverTimezone=UTC"/-->
+			<property name="javax.persistence.jdbc.user" value="root"/>
+			<property name="javax.persistence.jdbc.password" value="Patito.123@456"/>
+			<!--property name="javax.persistence.jdbc.password" value="admin"/-->
+			<property name="javax.persistence.jdbc.friver" value="com.mysql.cj.jdbc.Driver"/>
+		</properties>
+	</persistence-unit>
+</persistence>
