@@ -23,7 +23,6 @@ public class Producto implements Serializable {
 	private int cantidad;
 	@Column(nullable=false)
 	private String estado;
-	@Column(nullable=false)
 	@ManyToOne
 	@JoinColumn
 	private Categoria categoria;

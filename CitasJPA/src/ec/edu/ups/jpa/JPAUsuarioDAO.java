@@ -12,7 +12,7 @@ public class JPAUsuarioDAO extends JPAGenericDAO<Usuario, Integer> implements Us
 	}
 
 	public Usuario login(String usuario, String contrasena) {
-		String jpql = "SELECT u FROM Usuario u WHERE u.usuario='" + usuario + "' AND contrasena='" + contrasena;
+		String jpql = "SELECT u FROM Usuario u WHERE u.usuario='" + usuario + "' AND u.contrasena='" + contrasena + "'";
 		Usuario usu = (Usuario) em.createQuery(jpql).getSingleResult();
 		return usu;
 	}

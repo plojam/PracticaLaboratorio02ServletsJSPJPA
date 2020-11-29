@@ -22,16 +22,15 @@ public class Cabecera implements Serializable {
 	@Column(nullable=false)
 	private String estado;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cabecera")
-	private ArrayList<Detalle> detalles;
+	private ArrayList<Detalle> detalles = new ArrayList<Detalle>();
 	@ManyToOne
 	@JoinColumn
 	private Usuario usuario;
 	
-	public Cabecera(int id, String estado, ArrayList<Detalle> detalles, Usuario usuario) {
+	public Cabecera(int id, String estado, Usuario usuario) {
 		super();
 		this.id = id;
 		this.estado = estado;
-		this.detalles = detalles;
 		this.usuario = usuario;
 	}
 	
@@ -75,6 +74,8 @@ public class Cabecera implements Serializable {
 		this.usuario = usuario;
 	}
 	
-	
+	public void addDetalles(Detalle detalle) {
+		this.detalles.add(detalle);
+	}
    
 }

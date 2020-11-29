@@ -29,14 +29,13 @@ public class Usuario implements Serializable {
 	private String contrasena;
 	@Column(nullable=false)
 	private String rol;
-	@Column(nullable=false)
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
-	private ArrayList<Cabecera> cabeceras;
+	private ArrayList<Cabecera> cabeceras = new ArrayList<Cabecera>();
 	@ManyToOne
 	@JoinColumn
 	private Empresa empresa;
 	
-	public Usuario(int id, String nombre, String apellido, String usuario, String contrasena, String rol, ArrayList<Cabecera> cabeceras, Empresa empresa) {
+	public Usuario(int id, String nombre, String apellido, String usuario, String contrasena, String rol, Empresa empresa) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -120,6 +119,8 @@ public class Usuario implements Serializable {
 		this.empresa = empresa;
 	}
 	
+	public void addCabeceras(Cabecera cabecera) {
+		this.cabeceras.add(cabecera);
+	}
 	
-   
 }

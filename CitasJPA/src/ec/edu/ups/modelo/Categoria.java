@@ -22,13 +22,12 @@ public class Categoria implements Serializable {
 	@Column(nullable=false)
 	private String nombre;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "categoria")
-	private ArrayList<Producto> productos;
+	private ArrayList<Producto> productos = new ArrayList<Producto>();
 	
-	public Categoria(int id, String nombre, ArrayList<Producto> productos) {
+	public Categoria(int id, String nombre) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
-		this.productos = productos;
 	}
    
 	public Categoria() {
@@ -63,6 +62,8 @@ public class Categoria implements Serializable {
 		this.productos = productos;
 	}
 	
-	
+	public void addProductos(Producto producto) {
+		this.productos.add(producto);
+	}
 	
 }

@@ -23,11 +23,11 @@ public class Empresa implements Serializable {
 	@Column(nullable=false)
 	private String nombre;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "empresa")
-	private ArrayList<Usuario> usuarios;
+	private ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "empresa")
-	private ArrayList<Producto> productos;
+	private ArrayList<Producto> productos = new ArrayList<Producto>();
 	
-	public Empresa(int id, String nombre, ArrayList<Usuario> usuarios, ArrayList<Producto> productos) {
+	public Empresa(int id, String nombre) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -74,6 +74,12 @@ public class Empresa implements Serializable {
 		this.productos = productos;
 	}
 	
+	public void addUsuarios(Usuario usuario) {
+		this.usuarios.add(usuario);
+	}
 	
+	public void addProductos(Producto producto) {
+		this.productos.add(producto);
+	}
    
 }
