@@ -19,7 +19,7 @@ public class Detalle implements Serializable {
 	private int id;
 	@Column(nullable=false)
 	private int cantidad;
-	@ManyToOne
+	@OneToOne
 	@JoinColumn
 	private Producto producto;
 	@ManyToOne

@@ -29,6 +29,8 @@ public class Producto implements Serializable {
 	@ManyToOne
 	@JoinColumn
 	private Empresa empresa;
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "producto")
+	private Detalle detalle;
 	
 	public Producto(int id, String nombre, int cantidad, String estado, Categoria categoria, Empresa empresa) {
 		super();
