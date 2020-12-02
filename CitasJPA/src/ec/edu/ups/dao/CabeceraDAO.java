@@ -11,5 +11,7 @@ import ec.edu.ups.modelo.Cabecera;
 public interface CabeceraDAO extends GenericDAO<Cabecera, Integer> {
 	
 	public abstract List<Cabecera> listarPorUsuario(int usuarioId);
+	public int ultimoCreado();
+	public List<Cabecera> listarRevisadas(int usuarioId);
 	
 }

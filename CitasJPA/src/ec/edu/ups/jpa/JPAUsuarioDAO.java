@@ -29,4 +29,10 @@ public class JPAUsuarioDAO extends JPAGenericDAO<Usuario, Integer> implements Us
 		return empId;
 	}
 
+	public List<Usuario> buscarSoloUsuario(int empresaId) {
+		String jpql = "SELECT u FROM Usuario u WHERE u.rol='u' AND u.empresa.id=" + empresaId;
+		List<Usuario> usuarios = (List<Usuario>) em.createQuery(jpql).getSingleResult();
+		return usuarios;
+	}
+
 }

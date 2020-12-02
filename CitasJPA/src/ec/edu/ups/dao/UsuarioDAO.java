@@ -9,4 +9,5 @@ public interface UsuarioDAO extends GenericDAO<Usuario, Integer> {
 	public abstract Usuario login(String usuario, String contrasena);
 	public abstract List<Usuario> buscarPorEmpresa(int empresaId);
 	public abstract int empresaId(int id);
+	public abstract List<Usuario> buscarSoloUsuario(int empresaId);
 }

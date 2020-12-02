@@ -17,9 +17,23 @@ public class JPACabeceraDAO extends JPAGenericDAO<Cabecera, Integer> implements 
 
 	public List<Cabecera> listarPorUsuario(int usuarioId) {
 		String jpql = "SELECT c FROM Cabecera c WHERE c.usuario.id="+usuarioId;
-		List<Cabecera> cabeceras = em.createQuery(jpql).getResultList();
+		List<Cabecera> cabeceras = (List<Cabecera>) em.createQuery(jpql).getResultList();
 		return cabeceras;
 
+	}
+
+
+	public int ultimoCreado() {
+		String jpql = "SELECT max(c.id) FROM Cabecera c";
+		int catId = (int) em.createQuery(jpql).getSingleResult();
+		return catId;
+	}
+
+
+	public List<Cabecera> listarRevisadas(int usuarioId) {
+		String jpql = "SELECT c FROM Cabecera c WHERE c.usuario.id="+usuarioId+ " AND c.estado!='e'";
+		List<Cabecera> cabeceras = (List<Cabecera>) em.createQuery(jpql).getResultList();
+		return cabeceras;
 	}
 
 	
