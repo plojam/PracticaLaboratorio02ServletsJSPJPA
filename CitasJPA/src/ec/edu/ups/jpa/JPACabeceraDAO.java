@@ -2,7 +2,6 @@ package ec.edu.ups.jpa;
 
 import java.util.List;
 import java.util.Locale.Category;
-
 import com.mysql.cj.Query;
 
 import ec.edu.ups.dao.CabeceraDAO;

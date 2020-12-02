@@ -4,7 +4,7 @@ import ec.edu.ups.dao.CategoriaDAO;
 import ec.edu.ups.dao.DAOFactory;
 import ec.edu.ups.modelo.Categoria;
 
-public class test {
+public class test5 {
 
 	public static void main(String[] args) {
 		

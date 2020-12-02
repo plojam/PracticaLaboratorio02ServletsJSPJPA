@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/CitasJPA/CSS/estilos.css">
+</head>
+<body>
+	<header>
+        <a href="index.html"><img src="logo_ups.png" alt="Logo" width="700" height="100" /></a>
+        <h2>Menu de Inicio</h2>
+
+        <nav id="list_1">
+            <ul>
+                <li>Login</li>
+                <li>Empresas</li>
+                <li>Productos</li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="jump"></div>
+
+    <form action="/CitasJPA/IniciarSesionController" method="post">
+        <label for="user">Usuario: </label>
+        <input type="text" name="user">
+
+        <label for="contra">Contrasena: </label>
+        <input type="password" name="contra">
+        
+        <input type="submit" value="Iniciar Sesion">
+    </form>
+</body>
+
+<footer>
+	<fieldset>
+        <legend>Institucion</legend>
+        <span>
+          Universidad: Universidad Politecnica Salesiana<br>
+          Sede: Cuenca<br>
+          Periodo: 57<br>
+        </span>
+    </fieldset>
+
+    <fieldset>
+        <legend>Contacto</legend>
+        <span>
+          Autores: Robbyn Taurino Reyes Duchitanga<br>
+          Correo: <a href="mailto:rreyesd@est.ups.edu.ec">rreyesd@est.ups.edu.ec</a><br>
+          Telefono: <a href="tel:+0969784090">0969784090</a><br>
+        </span>
+    </fieldset>
+</footer>
+</html>

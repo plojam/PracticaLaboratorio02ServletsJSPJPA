@@ -24,8 +24,8 @@ public class JPAProductoDAO extends JPAGenericDAO<Producto, Integer> implements 
 		return catId;
 	}
 
-	public List<Producto> find(int empId) {
-		String jpql = "SELECT p FROM Producto p WHERE p.empresa.id="+empId;
+	public List<Producto> findEmpresa(int empId) {
+		String jpql = "SELECT p FROM Producto p WHERE p.empresa.id="+empId + " AND p.estado != 'e'";
 		List<Producto> productos = em.createQuery(jpql).getResultList();
 		return productos;
 	}
