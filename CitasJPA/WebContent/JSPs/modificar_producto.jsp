@@ -24,8 +24,6 @@
 		int usu = (Integer) request.getAttribute("usuario_id");
 	%>
 
-	<% PrintWriter out2= response.getWriter(); %>
-	
 	<header>
         <img src="logo_ups.png" alt="Logo" width="700" height="100"/>
         <h2>Menu de Inicio</h2>
@@ -51,29 +49,18 @@
 			<td><strong>Categoria</strong></td>
 			<td><strong>Modificar</strong></td>
 		</tr>
-		<% 
-			List<Producto> lista_P = null;
-
-			lista_P = (List<Producto>) request.getAttribute("productos");
-			ProductoDAO productoDao = DAOFactory.getFactory().getProductoDAO();
-			CategoriaDAO categoriaDao = DAOFactory.getFactory().getCategoriaDAO();
-			
-			Producto prod = null;
-			Categoria cate = null;
-			
-			int categoria_id;
-		%>
 		
 		<% 
+			List<Producto> lista_P = (List<Producto>) request.getAttribute("productos");
+		
+			Producto prod = null;
+			
 			for(int i = 0; i < lista_P.size(); i++) {
 				prod = lista_P.get(i);
-				categoria_id = productoDao.categoriaId(prod.getId());
-				
-				cate = categoriaDao.read(categoria_id);
 				
 				out.println("<tr><td>" + prod.getNombre() + "<td>");
 				out.println("<td>" + prod.getCantidad() + "<td>");
-				out.println("<td>" + cate.getNombre() + "<td>");
+				out.println("<td>" + prod.getCategoria().getNombre() + "<td>");
 				out.println("<td><form action='/CitasJPA/BuscarProductosController' method='post'>" +
 						"<input type='text' value='m' name='page' style='display:none'>" + 
 						"<input type='text' value='ide' name='bus' style='display:none'>" + 

@@ -22,6 +22,9 @@ public class ListarProductosController extends HttpServlet {
 	private ProductoDAO productoDao;
     private List<Producto> listaProductos;
     
+    private int usuario_id;
+    private int empresa_id;
+    
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -39,8 +42,8 @@ public class ListarProductosController extends HttpServlet {
 		try {
 			String page = request.getParameter("page");
 			
-			int usuario_id = Integer.valueOf(request.getParameter("usuario_id"));
-			int empresa_id = Integer.valueOf(request.getParameter("empresa_id")); 
+			usuario_id = Integer.valueOf(request.getParameter("usuario_id"));
+			empresa_id = Integer.valueOf(request.getParameter("empresa_id")); 
 
 			if(page.equals("m")) {
 				
@@ -55,6 +58,8 @@ public class ListarProductosController extends HttpServlet {
 				
 				System.out.println("Cantidad 1 ID: " + listaProductos.get(0).getCantidad());
 				System.out.println("Cantidad 2 ID: " + listaProductos.get(1).getCantidad());
+				System.out.println("Cantidad 3 ID: " + listaProductos.get(2).getCantidad());
+				System.out.println("Cantidad 4 ID: " + listaProductos.get(3).getCantidad());
 				
 				url = "/JSPs/modificar_producto.jsp";
 			}

@@ -4,10 +4,7 @@
 
 <%@page import="java.io.PrintWriter"%>
 <%@page import="ec.edu.ups.dao.DAOFactory"%>
-<%@page import="ec.edu.ups.modelo.Producto"%>
 <%@page import="ec.edu.ups.modelo.Detalle"%>
-<%@page import="ec.edu.ups.dao.DetalleDAO"%>
-<%@page import="ec.edu.ups.dao.ProductoDAO"%>
 <%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html>
@@ -105,11 +102,8 @@
 			<% 
 				List<Detalle> lista_D = (List<Detalle>) request.getAttribute("detalles"); 
 				String comp = String.valueOf(request.getAttribute("comprobar"));
-				DetalleDAO detalleDao = DAOFactory.getFactory().getDetalleDAO();
-				ProductoDAO productoDao = DAOFactory.getFactory().getProductoDAO();
 				
-				Detalle deta = new Detalle();
-				Producto prod = new Producto();
+				Detalle deta;
 				
 				int producto_id;
 			%>
@@ -119,15 +113,10 @@
 			if(comp.equals("t")){
 				
 				for (int i = 0; i < lista_D.size(); i++){
-					Detalle control = lista_D.get(i);
-					deta = control;
+					deta = lista_D.get(i);
 					
-					//producto_id =  detalleDao.obtenerProductoId(deta);
-					
-					//prod = productoDao.read(producto_id);
-					
-	                out.println("<tr><td>" + prod.getNombre() + "</td>");
-	                out.println("<td>" + control.getCantidad() + "</td></tr>");
+	                out.println("<tr><td>" + deta.getProducto().getNombre() + "</td>");
+	                out.println("<td>" + deta.getCantidad() + "</td></tr>");
        			}
 			}else {
 				System.out.println("Null del Administrar Pedidos");

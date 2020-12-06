@@ -13,6 +13,7 @@ import ec.edu.ups.dao.CategoriaDAO;
 import ec.edu.ups.dao.DAOFactory;
 import ec.edu.ups.dao.ProductoDAO;
 import ec.edu.ups.modelo.Categoria;
+import ec.edu.ups.modelo.Empresa;
 import ec.edu.ups.modelo.Producto;
 
 /**
@@ -38,9 +39,9 @@ public class ModificarProductosController extends HttpServlet {
     public ModificarProductosController() {
     	productoDao = DAOFactory.getFactory().getProductoDAO();
     	categoriaDao = DAOFactory.getFactory().getCategoriaDAO();
-        
-        producto = new Producto();
-        categoria = new Categoria();
+    	
+    	producto = null;
+        categoria = null;
         productos = null;
     }
     
@@ -61,18 +62,17 @@ public class ModificarProductosController extends HttpServlet {
 			producto.setNombre(request.getParameter("nombre"));
 			producto.setCantidad(Integer.valueOf(request.getParameter("cantidad")));
 			producto.setEstado("h");
-			//producto.setCategoria(categoria);
+			producto.setCategoria(categoria);
 			
 			productoDao.update(producto);
-			
 			productos = productoDao.findEmpresa(empresa_id);
-			
+			/*
 			System.out.println("PRODUCTO ID: " + producto.getId());
 			System.out.println("EMPRESA ID: " + producto.getEmpresa().getId());
 			
 			System.out.println("Cantidad 1 ID: " + productos.get(0).getCantidad());
 			System.out.println("Cantidad 2 ID: " + productos.get(1).getCantidad());
-			
+			*/
 			request.setAttribute("productos", productos);
 			request.setAttribute("empresa_id", empresa_id);
 			request.setAttribute("usuario_id", usuario_id);

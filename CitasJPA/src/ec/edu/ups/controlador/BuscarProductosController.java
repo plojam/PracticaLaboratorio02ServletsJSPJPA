@@ -32,8 +32,8 @@ public class BuscarProductosController extends HttpServlet {
      */
     public BuscarProductosController() {
     	productoDao = DAOFactory.getFactory().getProductoDAO();
-    	producto = new Producto();
     	
+    	producto = null;
     	productos = null;
     }
 
@@ -53,13 +53,13 @@ public class BuscarProductosController extends HttpServlet {
 				
 				producto = productoDao.read(producto_id);
 				productos = productoDao.findEmpresa(empresa_id);
-				
+				/*
 				System.out.println("PRODUCTO ID: " + producto.getId());
 				System.out.println("EMPRESA ID: " + producto.getEmpresa().getId());
 				
 				System.out.println("Cantidad 1 ID: " + productos.get(0).getCantidad());
 				System.out.println("Cantidad 2 ID: " + productos.get(1).getCantidad());
-				
+				*/
 				request.setAttribute("producto", producto);		
 				request.setAttribute("productos", productos);
 				request.setAttribute("empresa_id", empresa_id);
@@ -73,6 +73,7 @@ public class BuscarProductosController extends HttpServlet {
 				
 				productos = productoDao.buscarPorCateoria(Integer.valueOf(request.getParameter("categoria")), empresa_id);
 				request.setAttribute("productos", productos);
+				
 				url = "/JSPs/buscar_producto.jsp";
 				
 			} else if(control.equals("b") && metodo.equals("nom")) {
@@ -81,6 +82,7 @@ public class BuscarProductosController extends HttpServlet {
 				
 				producto = productoDao.buscarPorNombre(request.getParameter("nombre"), empresa_id);
 				request.setAttribute("producto", producto);
+				
 				url = "/JSPs/buscar_producto.jsp";
 			}
 			

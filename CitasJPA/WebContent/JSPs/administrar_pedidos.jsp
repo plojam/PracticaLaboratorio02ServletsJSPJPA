@@ -6,8 +6,7 @@
 <%@page import="ec.edu.ups.dao.DAOFactory"%>
 <%@page import="ec.edu.ups.modelo.Producto"%>
 <%@page import="ec.edu.ups.modelo.Detalle"%>
-<%@page import="ec.edu.ups.dao.DetalleDAO"%>
-<%@page import="ec.edu.ups.dao.ProductoDAO"%>
+<%@page import="ec.edu.ups.modelo.Cabecera"%>
 <%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html>
@@ -15,16 +14,16 @@
 	<meta charset="ISO-8859-1">
 	<title>Controlar Pedidos</title>
 	<link rel="stylesheet" type="text/css" href="/CitasJPA/CSS/estilos.css">
+	<script src="/CitasJPA/JavaScript/funciones.js"></script>
 </head>
 <body>
 
 	<c:set var="lista_U" scope="request" value="${usuarios}"/>
-	<c:set var="lista_C" scope="request" value="${cabeceras}"/>
-	<c:set var="usu" scope="request" value="${usuario_id}"/>
-	<c:set var="usuS" scope="request" value="${usuarioS_id}"/>
-	<c:set var="emp" scope="request" value="${empresa_id}"/>
-
-	<% PrintWriter out2= response.getWriter(); %>
+	
+	<% 
+		int emp = (Integer) request.getAttribute("empresa_id");
+		int usu = (Integer) request.getAttribute("usuario_id"); 
+	%>
 	
 	<header>
         <img src="logo_ups.png" alt="Logo" width="700" height="100"/>
@@ -58,8 +57,8 @@
 					<form action="/CitasJPA/ListarCabecerasController" method="post">
 						<input type="text" value="${us.id}" name="usuarioS_id" style="display:none">
 						<input type="text" value="cp" name="page" style="display:none">
-						<input type="text" value="${usu}" name="usuario_id" style="display:none"> 
-						<input type="text" value="${emp}" name="empresa_id" style="display:none">
+						<input type="text" value="<%= usu %>" name="usuario_id" style="display:none"> 
+						<input type="text" value="<%= emp %>" name="empresa_id" style="display:none">
 						<input type="submit" value="Listar">
 					</form> 
 				</td>
@@ -67,100 +66,101 @@
 		</c:forEach>
 		</table>
     </div>
-    
+ 
     <div id="pedidos">
-    	<h1>Pedidos</h1>
     	
-    	<table id="tabla_cabeceras">
-		<tr>
-			<td><strong>Numero</strong></td>
-			<td><strong>Estado</strong></td>
-			<td><strong>Detalle</strong></td>
-			<td><strong>Aceptar</strong></td>
-			<td><strong>Denegar</strong></td>
-		</tr>
-		<c:forEach var="cab" items="${lista_C}">
-			<tr>
-				<td>${cab.id}</td>
-				<td>${cab.estado}</td>
-				<td>
-					<form action="/CitasJPA/ListarDetallesController" method="post">
-						<input type="text" value="${cab.id}" name="cab_id" style="display:none"> 
-						<input type="text" name="usuarioS_id" value="${usuS}" style="display:none">
-						<input type="text" name="usuario_id" value="${usu}" style="display:none">
-						<input type="text" name="empresa_id" value="${emp}" style="display:none">
-						<input type="submit" value="Ver Detalle">
-					</form> 
-				</td>
-				<td>
-					<form action="/CitasJPA/ControlarPedidosController" method="post">
-						<input type="text" value="${cab.id}" name="cab_id" style="display:none"> 
-						<input type="text" name="usuarioS_id" value="${usuS}" style="display:none">
-						<input type="text" value="aceptado" name="estado" style="display:none"> 
-						<input type="text" name="usuario_id" value="${usu}" style="display:none">
-						<input type="text" name="empresa_id" value="${emp}" style="display:none">
-						<input type="submit" value="Aceptar">
-					</form> 
-				</td>
-				<td>
-					<form action="/CitasJPA/ControlarPedidosController" method="post">
-						<input type="text" value="${cab.id}" name="cab_id" style="display:none"> 
-						<input type="text" name="usuarioS_id" value="${usuS}" style="display:none">
-						<input type="text" value="negado" name="estado" style="display:none">
-						<input type="text" name="usuario_id" value="${usu}" style="display:none">
-						<input type="text" name="empresa_id" value="${emp}" style="display:none">
-						<input type="submit" value="Denegar">
-					</form> 
-				</td>
-			</tr>
-		</c:forEach>
-		</table>
+  		<% 
+			List<Cabecera> lista_C = (List<Cabecera>) request.getAttribute("cabeceras");
+			Cabecera cab;
+	  		
+			if(lista_C != null){
+				int usuS = (Integer) request.getAttribute("usuarioS_id");
+				out.println("<h1>Pedido</h1>");
+				
+	   			for(int i = 0; i < lista_C.size(); i++){
+	   				cab = lista_C.get(i);
+	   				
+	   				out.println("<table id='tabla_cabeceras'>" +
+	   				"<tr><td><strong>Numero</strong>" + 
+					"</td><td><strong>Estado</strong></td>" +
+	   				"<td><strong>Detalle</strong></td>" + 
+					"<td><strong>Aceptar</strong></td>" + 
+	   				"<td><strong>Denegar</strong></td></tr>");
+	   				
+	   				out.println("<tr><td>" + cab.getId() + "</td>" + 
+	   				"<td>" + cab.getEstado() + "</td>");
+	   				
+	   				/*out.println("<td><form action='/CitasJPA/ListarDetallesController' method='post'>" +
+	   						"<input type='text' value='" + cab.getId() + "' name='cab_id' style='display:none'>" +
+	   						"<input type='text' name='usuarioS_id' value='" + usuS +"' style='display:none'>" +
+	   						"<input type='text' name='usuario_id' value='"+ usu + "' style='display:none'>" + 
+	   						"<input type='text' name='empresa_id' value='" + emp + "' style='display:none'>" +
+	   						"<input type='submit' value='Ver Detalle'></form></td>");
+	   				*/
+	   				out.println("<td><input type='button' value='Ver Detalle' onclick='mostrarTabla()'></td>");
+	   				
+	   				out.println("<td><form action='/CitasJPA/ControlarPedidosController' method='post'>" +
+							"<input type='text' value='" + cab.getId() + "' name='cab_id' style='display:none'>" +
+							"<input type='text' name='usuarioS_id' value='" + usuS + "' style='display:none'>" +
+							"<input type='text' value='aceptado' name='estado' style='display:none'>" +
+							"<input type='text' name='usuario_id' value='" + usu + "' style='display:none'>" +
+							"<input type='text' name='empresa_id' value='" + emp + "' style='display:none'>" +
+							"<input type='submit' value='Aceptar'></form></td>");
+	   				
+	   				out.println("<td><form action=''/CitasJPA/ControlarPedidosController' method='post'>" +
+							"<input type='text' value='" + cab.getId() + "' name='cab_id' style='display:none'>" +
+							"<input type='text' name='usuarioS_id' value='" + usuS + "' style='display:none'>" +
+							"<input type='text' value='negado' name='estado' style='display:none'>" +
+							"<input type='text' name='usuario_id' value='" + usu + "' style='display:none'>" +
+							"<input type='text' name='empresa_id' value='" + emp + "' style='display:none'>" +
+							"<input type='submit' value='Denegar'></form></td></tr></table>");
+	   				
+   					out.println("<div id='detalles'><h1>Detalles</h1>");
+   			    
+   					for (int j = 0; j < cab.getDetalles().size(); j++){
+   						Detalle control = cab.getDetalles().get(j);
+   						
+   						out.println("<table id='tabla_detalles'><tr>" +
+   							"<td><strong>Producto</strong></td>" +
+   							"<td><strong>Cantidad</strong></td></tr>");
+   						
+   		                out.println("<tr><td>" + control.getProducto().getNombre() + "</td>");
+   		                out.println("<td>" + control.getCantidad() + "</td></tr></table></div>");
+   	       			}
+   				}
+   				
+   			}
+		%>	
+    </div>
+    <!-- 
+    <div id="detalles" style='display:none'>
+		<%-- 
+			List<Detalle> lista_D = (List<Detalle>) request.getAttribute("detalles");
+		
+			if(lista_D != null){
+				
+				out.println("<h1>Detalles</h1>");
+		    
+				for (int i = 0; i < lista_D.size(); i++){
+					Detalle control = lista_D.get(i);
+					
+					out.println("<table id='tabla_detalles'><tr>" +
+						"<td><strong>Producto</strong></td>" +
+						"<td><strong>Cantidad</strong></td></tr>");
+					
+	                out.println("<tr><td>" + control.getProducto().getNombre() + "</td>");
+	                out.println("<td>" + control.getCantidad() + "</td></tr></table>");
+       			}
+			}
+
+        --%>
     </div>
     
-    <div id="detalle">
-    	<h1>Detalles</h1>
-    	
-    	<table id="tabla_detalles">
-		<tr>
-			<td><strong>Producto</strong></td>
-			<td><strong>Cantidad</strong></td>
-		</tr>
-			<% 
-				List<Detalle> lista_D = (List<Detalle>) request.getAttribute("detalles"); 
-				String comp = String.valueOf(request.getAttribute("comprobar"));
-				DetalleDAO detalleDao = DAOFactory.getFactory().getDetalleDAO();
-				ProductoDAO productoDao = DAOFactory.getFactory().getProductoDAO();
-				
-				Detalle deta = new Detalle();
-				Producto prod = new Producto();
-				
-				int producto_id;
-			
-				if(comp.equals("t")){
-					
-					for (int i = 0; i < lista_D.size(); i++){
-						Detalle control = lista_D.get(i);
-						deta = control;
-						
-						//producto_id =  detalleDao.obtenerProductoId(deta);
-						
-						//prod = productoDao.read(producto_id);
-						
-		                out.println("<tr><td>" + prod.getNombre() + "</td>");
-		                out.println("<td>" + control.getCantidad() + "</td></tr>");
-	       			}
-				}else {
-					System.out.println("Null del Administrar Pedidos");
-				}
-	                
-	        %>
-			
-		</table>
-    </div>
+     -->
     
     <form action="/CitasJPA/BuscarUsuarioAdmin" method="post">
-    	<input type="text" name="emp_id" value="${emp}" style="display:none">
-		<input type="text" name="usu_id" value="${usu}" style="display:none">
+    	<input type="text" name="emp_id" value="<%= emp %>" style="display:none">
+		<input type="text" name="usu_id" value="<%= usu %>" style="display:none">
 		<input type="submit" value="Regresar a Inicio">
     </form>
     

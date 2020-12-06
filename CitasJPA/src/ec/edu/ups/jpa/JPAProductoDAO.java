@@ -31,7 +31,7 @@ public class JPAProductoDAO extends JPAGenericDAO<Producto, Integer> implements 
 	}
 
 	public List<Producto> buscarPorCateoria(int catId, int empId) {
-		String jpql = "SELECT p FROM Producto p WHERE p.empresa.id=" + empId + "AND p.categoria.id=" + catId;
+		String jpql = "SELECT p FROM Producto p WHERE p.empresa.id=" + empId + " AND p.categoria.id=" + catId + " AND p.estado !='e'";
 		List<Producto> productos = em.createQuery(jpql).getResultList();
 		return productos;
 	}

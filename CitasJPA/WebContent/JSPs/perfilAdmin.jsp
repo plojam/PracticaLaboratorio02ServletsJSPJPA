@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Perfil Admin</title>
+<title>Perfil Administrador</title>
 </head>
 <body>
 	<c:set var="usuA" scope="request" value="${usuario}" />
