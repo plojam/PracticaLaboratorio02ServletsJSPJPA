@@ -23,17 +23,17 @@
 	
 	<h2> Actividades de usuario </h2>
 	
-	<form action="/Pedidos/RegistrarCompraController" method="post">
+	<form action="/CitasJPA/RegistrarCompraController" method="post">
 		<input type="text" name="usuario_id" value="${usuN.id}" style="display:none">
 		<input type="submit" value="Registrar Compra">
 	</form>
 	
-	<form action="/Pedidos/ModificarCompraController" method="post">
+	<form action="/CitasJPA/ModificarCompraController" method="post">
 		<input type="text" name="usuario_id" value="${usuN.id}" style="display:none">
 		<input type="submit" value="Modificar Compra">
 	</form>
 	
-	<form action="/Pedidos/EliminarCompraController" method="post">
+	<form action="/CitasJPA/EliminarCompraController" method="post">
 		<input type="text" name="usuario_id" value="${usuN.id}" style="display:none">
 		<input type="text" name="page" value="b" style="display:none">
 		<input type="submit" value="Eliminar Compra">
@@ -46,7 +46,7 @@
 		<input type="submit" value="Listar Todas las Compras">
 	</form>
 	
-	<form action="/Pedidos/CerrarSesion" method="post"> 
+	<form action="/CitasJPA/CerrarSesion" method="post"> 
 		<input type="submit" value="Cerrar Sesion">
 	</form>
 	

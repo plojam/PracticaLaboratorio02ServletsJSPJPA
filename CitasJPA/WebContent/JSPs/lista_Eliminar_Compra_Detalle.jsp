@@ -5,9 +5,8 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Eliminar Compra</title>
+	<title>Lista Eliminar Compra</title>
 	<link rel="stylesheet" type="text/css" href="/CitasJPA/CSS/perfil.css">
-
 </head>
 <body>
 
@@ -18,55 +17,43 @@
 		<h3 class="datos">Nombre: ${usuN.nombre}</h3>
 		<h3 class="datos">Apellido: ${usuN.apellido}</h3>
 	</header>
-	
-	
+
 	<% 
 		String usu_id = request.getParameter("usuario_id");
+		
+	//	out.print(String.format("<p> VER USUARIO ID : <strong>%s</strong></p>", usu_id));
 	
-	//	out.print(String.format("<p> VER cabecera ID : <strong>%s</strong></p>", usu_id));
 	%>
 	
-	<c:set var="listadoC" scope="request" value="${listaCabecera}" />
+	<c:set var="listadoSinD" scope="request" value="${listaDetalle2}" />
+	
 	
 	
 	<table>
 		<tr>
 			<td><strong>Código </strong></td>
-			<td><strong>  Estado</strong></td>
+			<td><strong> Producto</strong></td>
+			<td><strong> Cantidad</strong></td>
+			<td><strong> Categoría</strong></td>
+			
 		</tr>
-		<c:forEach var="c" items="${listadoC}">
+		<c:forEach var="d2" items="${listaDetalle2}">
 			<tr>
-				<td>${c.id}</td>
-				<td>${c.estado}</td>
-				<td> <a href="/CitasJPA/ListarCompraController3?id=${c.id}&usuario_id=<%= usu_id %>" >Ver Detalle	</a> </td>
-				<td> <a href="/CitasJPA/EliminarCompraController2?id=${c.id}&usuario_id=<%= usu_id %>">	Eliminar Pedido</a> </td>
+				<td>${d2.id}</td>
+				<td>${d2.producto.getNombre()}</td>
+				<td>${d2.cantidad}</td>
+				<td>${d2.producto.categoria.getNombre()}</td>
 				
 			</tr>
 		</c:forEach>
 	</table>
 	
-	
-    <form action="/CitasJPA/BuscarUsuario" method="post">
+    <form action="/CitasJPA/EliminarCompraController" method="post">
     	<input type="text" value=<%= usu_id %>  name="usuario_id" style="display:none">
-		<input type="submit" value="Regresar al menu">
+		<input type="submit" value="Regresar ">
     </form>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
 
 </body>
 </html>
