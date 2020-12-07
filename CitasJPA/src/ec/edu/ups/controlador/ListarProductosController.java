@@ -52,14 +52,13 @@ public class ListarProductosController extends HttpServlet {
 				request.setAttribute("productos", listaProductos);
 				request.setAttribute("empresa_id", empresa_id);
 				request.setAttribute("usuario_id", usuario_id);
-				
 				//System.out.println("PRODUCTO ID: " + producto.getId());
 				//System.out.println("EMPRESA ID: " + producto.getEmpresa().getId());
 				
-				System.out.println("Cantidad 1 ID: " + listaProductos.get(0).getCantidad());
-				System.out.println("Cantidad 2 ID: " + listaProductos.get(1).getCantidad());
-				System.out.println("Cantidad 3 ID: " + listaProductos.get(2).getCantidad());
-				System.out.println("Cantidad 4 ID: " + listaProductos.get(3).getCantidad());
+				//System.out.println("Cantidad 1 ID: " + listaProductos.get(0).getCantidad());
+				//System.out.println("Cantidad 2 ID: " + listaProductos.get(1).getCantidad());
+				//System.out.println("Cantidad 3 ID: " + listaProductos.get(2).getCantidad());
+				//System.out.println("Cantidad 4 ID: " + listaProductos.get(3).getCantidad());
 				
 				url = "/JSPs/modificar_producto.jsp";
 			}

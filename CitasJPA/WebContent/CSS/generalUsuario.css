@@ -107,9 +107,9 @@ input, .form label, .form select{
 .table{
 	margin-left: 15%;
 	width: 70%;
-	border-radius: 10%;
 	background-color: rgb(40,40,40);
 	border: solid rgb(0,128,220);
+	border-radius: 0px;
 }
 
 td{

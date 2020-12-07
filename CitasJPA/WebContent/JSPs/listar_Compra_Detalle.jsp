@@ -6,18 +6,22 @@
 <head>
 	<meta charset="ISO-8859-1">
 	<title>Listar Compra Detalle</title>
-	<link rel="stylesheet" type="text/css" href="/Pedidos/CSS/perfil.css">
+	<link rel="stylesheet" type="text/css" href="/CitasJPA/CSS/generalUsuario.css">
 
 </head>
 <body>
 
 	<header>
-		<h1>Persona encontrada</h1>		
-		<hr color="#313b4a" width="98%">
-		<h3 class="datos">Id: ${usuN.id}</h3>
-		<h3 class="datos">Nombre: ${usuN.nombre}</h3>
-		<h3 class="datos">Apellido: ${usuN.apellido}</h3>
-	</header>
+        <img id="logo" src="/CitasJPA/img/logo_ups.png" alt="Logo" width="700" height="100"/>
+        <h1>Menu de Inicio</h1>
+ 
+        <nav id="list_1">
+            <ul>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="/CitasJPA/ListarEmpresas">Empresas</a></li>
+            </ul>
+        </nav>
+    </header> 
 	
 
 	<% 
@@ -27,15 +31,17 @@
 	
 	%>
 	
+	<div class="espacio"></div>
+	
 	<c:set var="listadoD2" scope="request" value="${listaDetalle2}" />
 	
 	
-	<table>
+	<table class="table">
 		<tr>
-			<td><strong>Código </strong></td>
-			<td><strong> Producto</strong></td>
-			<td><strong> Cantidad</strong></td>
-			<td><strong> Categoría</strong></td>
+			<td class="titulo"><strong>Código </strong></td>
+			<td class="titulo"><strong> Producto</strong></td>
+			<td class="titulo"><strong> Cantidad</strong></td>
+			<td class="titulo"><strong> Categoría</strong></td>
 			
 		</tr>
 		<c:forEach var="d2" items="${listaDetalle2}">
@@ -48,10 +54,10 @@
 			</tr>
 		</c:forEach>
 	</table>
-	
+	<br>
     <form action="/CitasJPA/ListarCompraController" method="post">
     	<input type="text" value=<%= usu_id %>  name="usuario_id" style="display:none">
-		<input type="submit" value="Regresar ">
+		<input class="btng" type="submit" value="Regresar ">
     </form>
 
 	

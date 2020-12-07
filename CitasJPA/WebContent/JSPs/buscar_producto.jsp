@@ -10,7 +10,7 @@
 <head>
 	<meta charset="ISO-8859-1">
 	<title>Buscar Producto</title>
-	<link rel="stylesheet" type="text/css" href="/CitasJPA/CSS/estilos.css">
+	<link rel="stylesheet" type="text/css" href="/CitasJPA/CSS/generalAdministrador.css">
 </head>
 <body>
 
@@ -20,21 +20,20 @@
 	%>
 
 	<header>
-        <img src="logo_ups.png" alt="Logo" width="700" height="100"/>
-        <h2>Buscar Producto</h2>
+        <img id="logo" src="/CitasJPA/img/logo_ups.png" alt="Logo" width="700" height="100"/>
+        <h1>Buscar Producto</h1>
 
         <nav id="list_1">
             <ul>
                 <li><a href="login.html">Login</a></li>
                 <li>Empresas</li>
-                <li>Productos</li>
             </ul>
         </nav>
     </header>
 
     <div class="jump"></div>
-    
-    <form action="/CitasJPA/BuscarProductosController" method="post">
+    <br>
+    <form class="form" action="/CitasJPA/BuscarProductosController" method="post">
     	<label for="categoria">Categoria: </label>
     	<select name="categoria">
             <option value="1">Perfumeria</option> 
@@ -49,8 +48,8 @@
         
         <input type="submit" value="Buscar por Categoria">
     </form>
-    
-    <form action="/CitasJPA/BuscarProductosController" method="post">
+    <br>
+    <form class="form" action="/CitasJPA/BuscarProductosController" method="post">
     	<label for="nombre">Nombre del Producto: </label>
     	<input type="text" name="nombre">
     	
@@ -61,8 +60,8 @@
     	
     	<input type="submit" value="Buscar por Nombre">
     </form>
-    
-    <aside id="primer_metodo" style="dyssplay:none">
+    <br>
+    <aside id="primer_metodo" style="dysplay:none">
     	<table class='table'>
     	<% 
     		List<Producto> lista_P = (List<Producto>) request.getAttribute("productos"); 
@@ -113,7 +112,7 @@
     <form action="/CitasJPA/BuscarUsuarioAdmin" method="post">
     	<input type="text" name="emp_id" value=<%= emp_id %>  style="display:none">
 		<input type="text" name="usu_id" value=<%= usu_id %>  style="display:none">
-		<input type="submit" value="Regresar a Inicio">
+		<input class="btng" type="submit" value="Regresar a Inicio">
     </form>
 </body>
 

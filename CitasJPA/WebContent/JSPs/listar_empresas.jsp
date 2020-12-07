@@ -15,7 +15,7 @@
 <body>
 
 	<header>
-        <a href="index.html"><img id="logo" src="/Pedidos/img/logo_ups.png" alt="Logo" width="700" height="100" /></a>
+        <a href="/CitasJPA/HTMLs/index.html"><img id="logo" src="/Pedidos/img/logo_ups.png" alt="Logo" width="700" height="100" /></a>
         <h1>Menu de Inicio</h1>
 
         <nav id="list_1">

@@ -12,7 +12,7 @@
 <head>
 	<meta charset="ISO-8859-1">
 	<title>Listar Pedidos</title>
-	<link rel="stylesheet" type="text/css" href="/CitasJPA/CSS/estilos.css">
+	<link rel="stylesheet" type="text/css" href="/CitasJPA/CSS/generalAdministrador.css">
 </head>
 <body>
 	<c:set var="lista_U" scope="request" value="${usuarios}"/>
@@ -23,14 +23,13 @@
 	%>
 
 	<header>
-        <img src="logo_ups.png" alt="Logo" width="700" height="100"/>
-        <h2>Menu de Inicio</h2>
+        <img id="logo" src="/CitasJPA/img/logo_ups.png" alt="Logo" width="700" height="100"/>
+        <h1>Menu de Inicio</h1>
 
         <nav id="list_1">
             <ul>
                 <li><a href="login.html">Login</a></li>
                 <li>Empresas</li>
-                <li>Productos</li>
             </ul>
         </nav>
     </header>
@@ -38,7 +37,7 @@
     <div class="jump"></div>
     
     <div id="usuarios">
-    	<h1>Usuarios</h1>
+    	<h1 class="tema">Usuarios</h1>
     	
     	<table class='table' id="tabla_users">
 			<tr>
@@ -108,7 +107,7 @@
     <form action="/CitasJPA/BuscarUsuarioAdmin" method="post">
     	<input type="text" name="emp_id" value="<%= emp %>" style="display:none">
 		<input type="text" name="usu_id" value="<%= usu %>" style="display:none">
-		<input type="submit" value="Regresar a Inicio">
+		<input class="btng" type="submit" value="Regresar a Inicio">
     </form>
     
     <footer>

@@ -13,7 +13,7 @@
 <head>
 	<meta charset="ISO-8859-1">
 	<title>Modificar Productos</title>
-	<link rel="stylesheet" type="text/css" href="/CitasJPA/CSS/estilos.css">
+	<link rel="stylesheet" type="text/css" href="/CitasJPA/CSS/generalAdministrador.css">
 </head>
 <body>
 	
@@ -25,14 +25,13 @@
 	%>
 
 	<header>
-        <img src="logo_ups.png" alt="Logo" width="700" height="100"/>
-        <h2>Menu de Inicio</h2>
+        <img id="logo" src="/CitasJPA/img/logo_ups.png" alt="Logo" width="700" height="100"/>
+        <h1>Menu de Inicio</h1>
 
         <nav id="list_1">
             <ul>
                 <li><a href="login.html">Login</a></li>
                 <li>Empresas</li>
-                <li>Productos</li>
             </ul>
         </nav>
     </header>
@@ -40,14 +39,14 @@
     <div class="jump"></div>
 
     <div id="lista_Productos">
-        <h1>Modificar Productos</h1>
+        <h1 class="tema">Modificar Productos</h1>
         
-        <table>
+        <table class="table">
 		<tr>
-			<td><strong>Nombre</strong></td>
-			<td><strong>Cantidad</strong></td>
-			<td><strong>Categoria</strong></td>
-			<td><strong>Modificar</strong></td>
+			<td class="titulo"><strong>Nombre</strong></td>
+			<td class="titulo"><strong>Cantidad</strong></td>
+			<td class="titulo"><strong>Categoria</strong></td>
+			<td class="titulo"><strong>Modificar</strong></td>
 		</tr>
 		
 		<% 
@@ -78,9 +77,9 @@
 		%>
 		</table>
 	</div>
-	
+	<br>
 	<div id="formulario_producto">
-		<form action="/CitasJPA/ModificarProductosController" method="post">
+		<form class="form" action="/CitasJPA/ModificarProductosController" method="post">
 			<label for="nombre">Nombre: </label>
 			<input type="text" name="nombre" value="${proInf.nombre}"/>
 			
@@ -98,7 +97,7 @@
 			<input type="text" name="usu_id" value=<%= usu %> style="display:none">
 			<input type="text" value="${proInf.id}" name="producto_id" style="display:none">
 			
-    	<input type="submit" value="Modificar Producto">
+    	<input class="btng" type="submit" value="Modificar Producto">
 		</form>
     </div>
     
@@ -107,7 +106,7 @@
 	    <form action="/CitasJPA/BuscarUsuarioAdmin" method="post">
 	    	<input type="text" name="emp_id" value=<%= emp %> style="display:none">
 			<input type="text" name="usu_id" value=<%= usu %> style="display:none">
-			<input type="submit" value="Regresar a Inicio">
+			<input class="btng" type="submit" value="Regresar a Inicio">
 	    </form>
     </div>
 </body>

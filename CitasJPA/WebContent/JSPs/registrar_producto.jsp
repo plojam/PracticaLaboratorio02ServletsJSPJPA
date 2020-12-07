@@ -6,7 +6,7 @@
 <head>
 	<meta charset="ISO-8859-1">
 	<title>Registrar Producto</title>
-	<link rel="stylesheet" type="text/css" href="/Pedidos/CSS/generalAdministrador.css">
+	<link rel="stylesheet" type="text/css" href="/CitasJPA/CSS/generalAdministrador.css">
 </head>
 <body>
 	<% 
@@ -15,14 +15,13 @@
 	%>
 
 	<header>
-        <img id="logo" src="/Pedidos/img/logo_ups.png" alt="Logo" width="700" height="100"/>
+        <img id="logo" src="/CitasJPA/img/logo_ups.png" alt="Logo" width="700" height="100"/>
         <h1>Menu de Inicio</h1>
 
         <nav id="list_1">
             <ul>
                 <li><a href="login.html">Login</a></li>
                 <li>Empresas</li>
-                <li>Productos</li>
             </ul>
         </nav>
     </header>
@@ -52,7 +51,7 @@
 			<input type="text" value=<%= emp_id %> name="empresa_id" style="display:none">
 			<input type="text" value=<%= usu_id %>  name="usuario_id" style="display:none">
 			<br>
-            <input type="submit" value="Registrar Producto">
+            <input class="btng" type="submit" value="Registrar Producto">
         </form>
     </div>
     
@@ -61,7 +60,7 @@
     <form action="/CitasJPA/BuscarUsuarioAdmin" method="post">
     	<input type="text" name="emp_id" value=<%= emp_id %>  style="display:none">
 		<input type="text" name="usu_id" value=<%= usu_id %>  style="display:none">
-		<input type="submit" value="Regresar a Inicio">
+		<input class="btng" type="submit" value="Regresar a Inicio">
     </form>
 </body>
 
