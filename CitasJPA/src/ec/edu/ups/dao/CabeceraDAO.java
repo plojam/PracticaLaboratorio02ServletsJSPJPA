@@ -14,4 +14,7 @@ public interface CabeceraDAO extends GenericDAO<Cabecera, Integer> {
 	public int ultimoCreado();
 	public List<Cabecera> listarRevisadas(int usuarioId);
 	
+	
+	public List<Cabecera> listarSinDelete(int usuarioId);
+	
 }

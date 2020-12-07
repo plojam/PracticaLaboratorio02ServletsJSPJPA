@@ -1,5 +1,7 @@
 package ec.edu.ups.jpa;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 import ec.edu.ups.dao.DetalleDAO;
@@ -18,8 +20,22 @@ public class JPADetalleDAO extends JPAGenericDAO<Detalle, Integer> implements De
 		List<Detalle> detalles = em.createQuery(jpql).getResultList();
 		return detalles;
 	}
-
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	public int obtenerProductoId(Detalle detalle) {
+		String jpql = "SELECT d.producto.id FROM Detalle d WHERE d.id=" + detalle.getId();
+		int productoId = (int) em.createQuery(jpql).getSingleResult();
+		return productoId;
+	}
+
+
 	
 	
 }

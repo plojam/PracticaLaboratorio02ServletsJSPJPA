@@ -1,5 +1,8 @@
 package ec.edu.ups.jpa;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale.Category;
 import com.mysql.cj.Query;
@@ -34,6 +37,25 @@ public class JPACabeceraDAO extends JPAGenericDAO<Cabecera, Integer> implements 
 		List<Cabecera> cabeceras = (List<Cabecera>) em.createQuery(jpql).getResultList();
 		return cabeceras;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public List<Cabecera> listarSinDelete(int usuarioId) {
+		String jpql = "SELECT c FROM Cabecera c WHERE c.usuario.id =" + usuarioId + " AND c.estado !='D'";
+		List<Cabecera> list = (List<Cabecera>) em.createQuery(jpql).getResultList();
+		
+		return list;
+	}
+	
 
 	
 	

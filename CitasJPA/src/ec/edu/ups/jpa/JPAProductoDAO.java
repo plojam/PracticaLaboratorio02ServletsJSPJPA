@@ -1,5 +1,7 @@
 package ec.edu.ups.jpa;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 import ec.edu.ups.dao.ProductoDAO;
@@ -41,5 +43,38 @@ public class JPAProductoDAO extends JPAGenericDAO<Producto, Integer> implements 
 		Producto producto = (Producto) em.createQuery(jpql).getSingleResult();
 		return producto;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public Producto TEST (int id_pro) {
+		String jpql = "SELECT p FROM Producto p WHERE p.id=" + id_pro ;
+		Producto producto = (Producto) em.createQuery(jpql).getSingleResult();
+		return producto;
+	}
+	
+	
+	
+	
+	
+	
+	
+	public int obtenerCategoriaId(int producto) {
+		String jpql = "SELECT p.categoria.id FROM Producto p WHERE p.id = " + producto;
+		int cat_id = (int) em.createQuery(jpql).getSingleResult();
+		return cat_id;
+	}
+	
+	
 
 }

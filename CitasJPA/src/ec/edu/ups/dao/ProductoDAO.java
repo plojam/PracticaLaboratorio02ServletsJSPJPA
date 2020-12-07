@@ -12,4 +12,10 @@ public interface ProductoDAO extends GenericDAO<Producto, Integer> {
 	public List<Producto> buscarPorCateoria(int catId, int empId);
 	public Producto buscarPorNombre(String nombre, int empId);
 	
+	
+	
+	public Producto TEST (int id_pro);
+	
+	public int obtenerCategoriaId(int producto);
+	
 }
