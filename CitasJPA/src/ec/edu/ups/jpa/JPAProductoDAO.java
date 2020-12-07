@@ -55,6 +55,15 @@ public class JPAProductoDAO extends JPAGenericDAO<Producto, Integer> implements 
 	
 	
 	
+	public Producto buscarSoloPorNombre(String nombre) {
+		String jpql = "SELECT p FROM Producto p WHERE p.nombre='" + nombre + "'";
+		Producto producto = (Producto) em.createQuery(jpql).getSingleResult();
+		return producto;
+	}
+	
+	
+	
+	
 	
 	
 	public Producto TEST (int id_pro) {

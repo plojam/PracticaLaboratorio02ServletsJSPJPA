@@ -26,6 +26,13 @@ public class JPADetalleDAO extends JPAGenericDAO<Detalle, Integer> implements De
 	
 	
 	
+	public Detalle test2(int pro_id, int cab_id) {
+		String jpql = "SELECT d FROM Detalle d WHERE d.producto.id= " + pro_id + " AND d.cabecera.id= " + cab_id;
+		Detalle detalle = (Detalle) em.createQuery(jpql).getSingleResult();
+
+		return detalle;
+	}
+	
 	
 	
 	
