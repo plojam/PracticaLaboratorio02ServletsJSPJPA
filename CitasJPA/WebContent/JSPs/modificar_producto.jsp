@@ -58,9 +58,9 @@
 			for(int i = 0; i < lista_P.size(); i++) {
 				prod = lista_P.get(i);
 				
-				out.println("<tr><td>" + prod.getNombre() + "<td>");
-				out.println("<td>" + prod.getCantidad() + "<td>");
-				out.println("<td>" + prod.getCategoria().getNombre() + "<td>");
+				out.println("<tr><td>" + prod.getNombre() + "</td>");
+				out.println("<td>" + prod.getCantidad() + "</td>");
+				out.println("<td>" + prod.getCategoria().getNombre() + "</td>");
 				out.println("<td><form action='/CitasJPA/BuscarProductosController' method='post'>" +
 						"<input type='text' value='m' name='page' style='display:none'>" + 
 						"<input type='text' value='ide' name='bus' style='display:none'>" + 

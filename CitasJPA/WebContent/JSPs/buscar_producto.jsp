@@ -4,9 +4,6 @@
 
 <%@page import="java.io.PrintWriter"%>
 <%@page import="ec.edu.ups.modelo.Producto"%>
-<%@page import="ec.edu.ups.modelo.Categoria"%>
-<%@page import="ec.edu.ups.dao.ProductoDAO"%>
-<%@page import="ec.edu.ups.dao.CategoriaDAO"%>
 <%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html>
@@ -20,11 +17,6 @@
 	<% 
 		String emp_id = request.getParameter("empresa_id");
 		String usu_id = request.getParameter("usuario_id");
-		
-		List<Producto> lista_P = (List<Producto>) request.getAttribute("productos");
-		Producto producto = (Producto) request.getAttribute("producto");
-		
-		PrintWriter out2= response.getWriter();
 	%>
 
 	<header>
@@ -71,55 +63,51 @@
     </form>
     
     <aside id="primer_metodo" style="dyssplay:none">
-    	<table>
-		<tr>
-			<td><strong>Nombre</strong></td>
-			<td><strong>Cantidad</strong></td>
-			<td><strong>Categoria</strong></td>
-		</tr>
-		
-		<%
-			if(lista_P == null){
-				System.out.println("Lista vacia al Inicio");
-			}else{
-				Producto prod;
-				
-				for(int i = 0; i < lista_P.size(); i++){
-					
-					prod = lista_P.get(i);
-					
-					out.println("<tr><td>" + prod.getNombre() + "</td>");
-					out.println("<td>" + prod.getCantidad() + "</td>");
-					out.println("<td>" + prod.getCategoria().getNombre() + "</td></tr>");	
-				}		
-			}
-		%>
-		
+    	<table class='table'>
+    	<% 
+    		List<Producto> lista_P = (List<Producto>) request.getAttribute("productos"); 
+    		Producto prod;	
+    	
+    		if(lista_P != null){
+    			out.println("<tr><td class='titulo'><strong>Codigo</strong></td>" +
+						"<td class='titulo'><strong>Nombre</strong></td>" +
+						"<td class='titulo'><strong>Cantidad</strong></td>" +
+						"<td class='titulo'><strong>Categoria</strong></td></tr>");
+    			
+    			for(int i = 0; i < lista_P.size(); i++){
+    				prod = lista_P.get(i);
+    				
+    				out.println("<tr><td>" + prod.getId() + "</td>");
+    				out.println("<td>" + prod.getNombre() + "</td>");
+    				out.println("<td>" + prod.getCantidad() + "</td>");
+    				out.println("<td>" + prod.getCategoria().getNombre() + "</td></tr>");
+    			}
+   			}
+    	
+    	%>
 		</table>
     </aside>
     
     <aside id="segundo_metodo" style="dysplay:none">
-    	<table>
-		<tr>
-			<td><strong>Nombre</strong></td>
-			<td><strong>Cantidad</strong></td>
-			<td><strong>Categoria</strong></td>
-		</tr>
-		<tr>
-			<% 
-				if(producto == null){
-					System.out.println("Producto vacio al Inicio");
-				} else {
-			%>
-				<td><%= producto.getNombre() %></td>
-				<td><%= producto.getCantidad() %></td>
-				<td><%= producto.getCategoria().getNombre() %></td>
-			<% 
-				}
-			%>
-			
-		</tr>
-		</table>
+    	<table class='table'>
+    	
+    	<%
+    		Producto prod2 = (Producto) request.getAttribute("producto");
+    	
+    		if(prod2 != null){
+    			out.println("<tr><td class='titulo'><strong>Codigo</strong></td>" +
+						"<td class='titulo'><strong>Nombre</strong></td>" +
+						"<td class='titulo'><strong>Cantidad</strong></td>" +
+						"<td class='titulo'><strong>Categoria</strong></td></tr>");
+    			
+    			out.println("<tr><td>" + prod2.getId() + "</td>");
+				out.println("<td>" + prod2.getNombre() + "</td>");
+				out.println("<td>" + prod2.getCantidad() + "</td>");
+				out.println("<td>" + prod2.getCategoria().getNombre() + "</td></tr>");
+    		}
+    	%>
+    	
+    	</table>
     </aside>
     
     <form action="/CitasJPA/BuscarUsuarioAdmin" method="post">

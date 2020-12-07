@@ -28,7 +28,7 @@ public class CerrarSesion extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		
 		if (session != null) {
-			session.setAttribute("acceso", 0);
+			session.setAttribute("acceso", null);
 			session.removeAttribute("acceso");
 			session.invalidate();
 			response.sendRedirect("/CitasJPA/HTMLs/index.html");

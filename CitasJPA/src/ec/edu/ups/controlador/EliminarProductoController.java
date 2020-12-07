@@ -32,7 +32,6 @@ public class EliminarProductoController extends HttpServlet {
      */
     public EliminarProductoController() {
     	productoDao = DAOFactory.getFactory().getProductoDAO();
-    	producto = new Producto();
     }
 
 	/**
@@ -49,7 +48,7 @@ public class EliminarProductoController extends HttpServlet {
 			producto = productoDao.read(producto_id);
 			producto.setEstado("e");
 			productoDao.update(producto);
-			productos = productoDao.find();
+			productos = productoDao.findEmpresa(empresa_id);
 			
 			request.setAttribute("productos", productos);
 			request.setAttribute("empresa_id", empresa_id);

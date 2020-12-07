@@ -43,11 +43,11 @@
     <div id="usuarios">
     	<h1>Usuarios</h1>
     	
-    	<table id="tabla_users">
+    	<table class='table' id="tabla_users">
 		<tr>
-			<td><strong>Nombre</strong></td>
-			<td><strong>Apellido</strong></td>
-			<td><strong>Pedidos</strong></td>
+			<td class='titulo'><strong>Nombre</strong></td>
+			<td class='titulo'><strong>Apellido</strong></td>
+			<td class='titulo'><strong>Pedidos</strong></td>
 		</tr>
 		<c:forEach var="us" items="${lista_U}">
 			<tr>
@@ -68,7 +68,6 @@
     </div>
  
     <div id="pedidos">
-    	
   		<% 
 			List<Cabecera> lista_C = (List<Cabecera>) request.getAttribute("cabeceras");
 			Cabecera cab;
@@ -80,12 +79,12 @@
 	   			for(int i = 0; i < lista_C.size(); i++){
 	   				cab = lista_C.get(i);
 	   				
-	   				out.println("<table id='tabla_cabeceras'>" +
-	   				"<tr><td><strong>Numero</strong>" + 
-					"</td><td><strong>Estado</strong></td>" +
-	   				"<td><strong>Detalle</strong></td>" + 
-					"<td><strong>Aceptar</strong></td>" + 
-	   				"<td><strong>Denegar</strong></td></tr>");
+	   				out.println("<table class='table' id='tabla_cabeceras'>" +
+	   				"<tr><td class='titulo'><strong>Numero</strong></td>" + 
+					"<td class='titulo'><strong>Estado</strong></td>" +
+	   				"<td class='titulo'><strong>Detalle</strong></td>" + 
+					"<td class='titulo'><strong>Aceptar</strong></td>" + 
+	   				"<td class='titulo'><strong>Denegar</strong></td></tr>");
 	   				
 	   				out.println("<tr><td>" + cab.getId() + "</td>" + 
 	   				"<td>" + cab.getEstado() + "</td>");
@@ -115,20 +114,24 @@
 							"<input type='text' name='empresa_id' value='" + emp + "' style='display:none'>" +
 							"<input type='submit' value='Denegar'></form></td></tr></table>");
 	   				
-   					out.println("<div id='detalles'><h1>Detalles</h1>");
+   					out.println("<div id='detalles'>");
    			    
+   					out.println("<table class='table' id='tabla_detalles'><tr>" +
+   							"<td class='titulo'><strong>Codigo</strong></td>" +
+   							"<td class='titulo'><strong>Producto</strong></td>" +
+   							"<td class='titulo'><strong>Cantidad</strong></td>" + 
+   							"<td class='titulo'><strong>Categoria</strong></td></tr>");
+   					
    					for (int j = 0; j < cab.getDetalles().size(); j++){
    						Detalle control = cab.getDetalles().get(j);
    						
-   						out.println("<table id='tabla_detalles'><tr>" +
-   							"<td><strong>Producto</strong></td>" +
-   							"<td><strong>Cantidad</strong></td></tr>");
-   						
-   		                out.println("<tr><td>" + control.getProducto().getNombre() + "</td>");
-   		                out.println("<td>" + control.getCantidad() + "</td></tr></table></div>");
+   						out.println("<tr><td>" + control.getId() + "</td>");
+   		                out.println("<td>" + control.getProducto().getNombre() + "</td>");
+   		                out.println("<td>" + control.getCantidad() + "</td>");
+   		             	out.println("<td>" + control.getProducto().getCategoria().getNombre() + "</td></tr>");
    	       			}
+   					out.println("</table></div>");
    				}
-   				
    			}
 		%>	
     </div>
