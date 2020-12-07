@@ -51,36 +51,6 @@ a:hover{
 	color: #B5B5A5;
 }
 
-#column_right {
-    width: 30%;
-    height: 562px;
-    background-color: rgb(40,40,40);
-    float: left;
-}
-
-.empty_a {
-    height: 230px;
-    margin: 40px;
-    background-color: rgb(40,40,40);
-}
-
-.empty_b {
-    height: 230px;
-    margin: 40px;
-    background-color: rgb(40,40,40);
-}
-
-#section1 {
-    width: 67%;
-    padding: 10px 20px;
-    background-color: rgb(53,53,53);
-    float: left;
-}
-
-#space_bottom {
-    margin-bottom: 100px;
-}
-
 hr {
     background-color: black;
     border: black solid 1px;
@@ -112,7 +82,37 @@ p{
 
 h2{
 	color: rgb(0,128,220);
+	clear: both;
+	padding-left: 40%
 }
 
+.espacio{
+	padding-top: 130px;
+}
 
+aside{
+	width: 48%;
+	float: left;
+	margin-left: 20px;
+}
 
+.ima{
+	width: 70%;
+	height: 200px;
+	margin-left: 15%;
+}
+
+.table{
+	margin-left: 15%;
+	width: 70%;
+	background-color: rgb(40,40,40);
+	border: solid rgb(0,128,220);
+}
+
+td{
+	color: rgb(223,238,255);
+}
+
+.titulo{
+	color: rgb(0,128,220) !important;
+}

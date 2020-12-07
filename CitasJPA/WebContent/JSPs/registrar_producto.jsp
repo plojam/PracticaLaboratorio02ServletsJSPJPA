@@ -6,7 +6,7 @@
 <head>
 	<meta charset="ISO-8859-1">
 	<title>Registrar Producto</title>
-	<link rel="stylesheet" type="text/css" href="/CitasJPA/CSS/estilos.css">
+	<link rel="stylesheet" type="text/css" href="/Pedidos/CSS/generalAdministrador.css">
 </head>
 <body>
 	<% 
@@ -15,8 +15,8 @@
 	%>
 
 	<header>
-        <img src="logo_ups.png" alt="Logo" width="700" height="100"/>
-        <h2>Menu de Inicio</h2>
+        <img id="logo" src="/Pedidos/img/logo_ups.png" alt="Logo" width="700" height="100"/>
+        <h1>Menu de Inicio</h1>
 
         <nav id="list_1">
             <ul>
@@ -30,25 +30,28 @@
     <div class="jump"></div>
 
 	<div id=opcion1>
-        <h1>Agregar Productos</h1>
+        <h1 class="tema">Agregar Productos</h1>
 
-        <form action="/CitasJPA/RegistrarProductosController" method="post">
+        <form class="form" action="/CitasJPA/RegistrarProductosController" method="post">
+        	<br>
             <label for="nombre">Nombre del Producto: </label>
+            <br>
             <input type="text" name="nombre">
-
+			<br>
             <label for="cantidad">Cantidad en Stock: </label>
-            <input type="text" name="cantidad">
-
+            <br>
+            <input type="text" name="cantidad"> 
+			<br>
             <label for="categoria">Categoria: </label>
             <select name="categoria">
                 <option value="1">Perfumeria</option> 
                 <option value="2">Maquillaje</option>
                 <option value="3">Moda</option>
             </select>
-
+			<br>
 			<input type="text" value=<%= emp_id %> name="empresa_id" style="display:none">
 			<input type="text" value=<%= usu_id %>  name="usuario_id" style="display:none">
-
+			<br>
             <input type="submit" value="Registrar Producto">
         </form>
     </div>

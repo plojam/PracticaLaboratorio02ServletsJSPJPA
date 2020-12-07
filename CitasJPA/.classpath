@@ -14,8 +14,8 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="D:/Meo (Carpeta Personal)/Septimo Ciclo/Plataformas Web/EclipseJEE/PracticaLaboratorio02ServletsJSPJPA/CitasJPA/WebContent/WEB-INF/lib/eclipselink.jar"/>
-	<classpathentry kind="lib" path="D:/Meo (Carpeta Personal)/Septimo Ciclo/Plataformas Web/EclipseJEE/PracticaLaboratorio02ServletsJSPJPA/CitasJPA/WebContent/WEB-INF/lib/jakarta.persistence_2.2.3.jar"/>
-	<classpathentry kind="lib" path="D:/Meo (Carpeta Personal)/Septimo Ciclo/Plataformas Web/EclipseJEE/PracticaLaboratorio02ServletsJSPJPA/CitasJPA/WebContent/WEB-INF/lib/mysql-connector-java-8.0.22.jar"/>
+	<classpathentry kind="lib" path="D:/Proyectos Eclipse/PracticaDeLaboratorio01ServletsJPSyJDBC/Pedidos/WebContent/WEB-INF/lib/jstl-api-1.2.jar"/>
+	<classpathentry kind="lib" path="D:/Proyectos Eclipse/PracticaDeLaboratorio01ServletsJPSyJDBC/Pedidos/WebContent/WEB-INF/lib/jstl-impl-1.2.jar"/>
+	<classpathentry kind="lib" path="D:/Proyectos Eclipse/PracticaDeLaboratorio01ServletsJPSyJDBC/Pedidos/WebContent/WEB-INF/lib/mysql-connector-java-8.0.22.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

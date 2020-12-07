@@ -10,12 +10,12 @@
 <head>
 	<meta charset="ISO-8859-1">
 	<title>Empresa</title>
-	<link rel="stylesheet" type="text/css" href="/CitasJPA/CSS/???.css">
+	<link rel="stylesheet" type="text/css" href="/CitasJPA/CSS/empresas.css">
 </head>
 <body>
 
 	<header>
-        <a href="index.html"><img src="/CitasJPA/img/logo_ups.png" alt="Logo" width="700" height="100" /></a>
+        <a href="index.html"><img id="logo" src="/Pedidos/img/logo_ups.png" alt="Logo" width="700" height="100" /></a>
         <h1>Menu de Inicio</h1>
 
         <nav id="list_1">
@@ -34,12 +34,13 @@
 		Empresa empresa_1 = lista_E.get(0);
 		Empresa empresa_2 = lista_E.get(1);
 	%>
-	
+	<div class="espacio"></div>
 	<aside id="empresa_1">
-		<img class="emp" src="/CitasJPA/img/AvonLogoBlack.jpg" alt="Logo"/>
+		<aside class="ima"><img class="emp" src="/Pedidos/img/AvonLogoBlack.jpg" width="100" height="10" alt="Logo"/></aside>
+		<br>
 		<h2>Nombre: <%= empresa_1.getNombre() %></h2>
 	
-		<table id="prods_1"> 
+		<table class="table" id="prods_1"> 
 			<%
 				out.println("<tr><td class='titulo'><strong>Codigo</strong></td>" +
 					"<td class='titulo'><strong>Nombre</strong></td>" +
@@ -60,10 +61,11 @@
 	
 	
 	<aside id="empresa_2">
-		<img class="emp" src="/CitasJPA/img/Logo_Yanbal.png" alt="Logo"/>
+		<aside class="ima"><img class="emp" src="/Pedidos/img/Logo_Yanbal.png" alt="Logo"/></aside>
+		<br>
 		<h2>Nombre: <%= empresa_2.getNombre() %></h2>
 		
-		<table id="prods_2"> 
+		<table class="table" id="prods_2"> 
 			<%
 				out.println("<tr><td class='titulo'><strong>Codigo</strong></td>" +
 					"<td class='titulo'><strong>Nombre</strong></td>" +

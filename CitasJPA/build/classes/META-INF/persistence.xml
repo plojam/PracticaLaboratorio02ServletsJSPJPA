@@ -13,8 +13,8 @@
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/pedidosjpa?serverTimezone=UTC"/>
 			<!--  property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:3307/pedidosjpa"/-->
 			<property name="javax.persistence.jdbc.user" value="root"/>
-			<!--property name="javax.persistence.jdbc.password" value="Patito.123@456"/-->
-			<property name="javax.persistence.jdbc.password" value="admin"/>
+			<property name="javax.persistence.jdbc.password" value="Patito.123@456"/>
+			<!--property name="javax.persistence.jdbc.password" value="admin"/-->
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
 		</properties>
 	</persistence-unit>

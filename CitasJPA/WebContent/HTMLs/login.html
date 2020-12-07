@@ -3,12 +3,12 @@
 <head>
 	<title>Login</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="/CitasJPA/CSS/estilos.css">
+    <link rel="stylesheet" type="text/css" href="/CitasJPA/CSS/generalAdministrador.css">
 </head>
 <body>
 	<header>
-        <a href="index.html"><img src="/CitasJPA/img/logo_ups.png" alt="Logo" width="700" height="100" /></a>
-        <h2>Menu de Inicio</h2>
+        <a href="index.html"><img id="logo" src="/Pedidos/img/logo_ups.png" alt="Logo" width="700" height="100" /></a>
+        <h1>Menu de Inicio</h1>
 
         <nav id="list_1">
             <ul>
@@ -17,10 +17,10 @@
             </ul>
         </nav>
     </header>
-
+    
     <div class="jump"></div>
-
-    <form action="/CitasJPA/IniciarSesionController" method="post">
+    <br>
+    <form class="form" action="/CitasJPA/IniciarSesionController" method="post">
         <label for="user">Usuario: </label>
         <input type="text" name="user">
 

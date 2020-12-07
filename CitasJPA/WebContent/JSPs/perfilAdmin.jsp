@@ -6,19 +6,24 @@
 <head>
 	<meta charset="ISO-8859-1">
 	<title>Perfil Administrador</title>
+	<link rel="stylesheet" type="text/css" href="/Pedidos/CSS/perfil.css">
 </head>
 <body>
 	<c:set var="usuA" scope="request" value="${usuario}" />
 	<c:set var="empA" scope="request" value="${empresa}" />
 
-	<h1>Administrador</h1>		
+	<header>
+		<h1>Administrador</h1>		
+		<hr color="#313b4a"  width="98%">
+		<h3 class="datos">Id: </h3><h3 class="datos2">${usuA.id}</h3>
+		<h3 class="datos">Nombre: </h3><h3 class="datos2">${usuA.nombre}</h3>
+		<h3 class="datos">Apellido: </h3><h3 class="datos2">${usuA.apellido}</h3>
+		<h3 class="datos">Empresa: </h3><h3 class="datos2">${empA.nombre} </h3>
+	</header>
+
 		
-	<p>Id: ${usuA.id}</p>
-	<p>Nombre: ${usuA.nombre}</p>
-	<p>Apellido: ${usuA.apellido}</p>
-	<p>Empresa: ${empA.nombre} </p>
 	
-	Administrar Productos
+	<h2> Actividades de administrador </h2>
 	
 	<form action="/CitasJPA/JSPs/registrar_producto.jsp" method="post">
 		<input type="text" name="empresa_id" value="${empA.id}" style="display:none">

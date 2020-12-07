@@ -1,7 +1,7 @@
 @charset "ISO-8859-1";
 
 body {
-    background-color: rgb(53,53,53);
+    background-color: rgb(53,53,53);;
 }
 
 .jump {
@@ -33,6 +33,12 @@ header h1 {
     float: left;
 }
 
+.tema {
+	margin-left: 30px !important;
+	padding-top: 10px !important;
+	color: rgb(0,128,220) !important;
+}
+
 ul {
     /*list-style-type: none;*/
     margin-right: 30px;
@@ -44,42 +50,14 @@ li {
 
 a {
 	text-decoration: none;
-	color: rgb(0,128,220);
+    color: rgb(0,128,220);
 }
 
 a:hover{
 	color: #B5B5A5;
 }
 
-#column_right {
-    width: 30%;
-    height: 562px;
-    background-color: rgb(40,40,40);
-    float: left;
-}
 
-.empty_a {
-    height: 230px;
-    margin: 40px;
-    background-color: rgb(40,40,40);
-}
-
-.empty_b {
-    height: 230px;
-    margin: 40px;
-    background-color: rgb(40,40,40);
-}
-
-#section1 {
-    width: 67%;
-    padding: 10px 20px;
-    background-color: rgb(53,53,53);
-    float: left;
-}
-
-#space_bottom {
-    margin-bottom: 100px;
-}
 
 hr {
     background-color: black;
@@ -97,22 +75,48 @@ footer fieldset {
     font-size: small;
 }
 
-.enlace {
-    -webkit-appearance: button;
-    -moz-appearance: button;
-    appearance: button;
-
-    text-decoration: none;
-    color: initial;
+form{
+	margin-left: 36%;
+	width: 25%;
+	border-radius: 10%;
 }
 
-p{
-	color: rgb(223,238,255);
+.form{
+	background-color: rgb(40,40,40);
+	border: solid rgb(0,128,220);
 }
 
-h2{
+
+input, .form label{
+	margin-top: 10px;
+	margin-bottom: 20px;
+	margin-left: 30%;
+}
+
+.form label{
+	padding-right: 10px;
 	color: rgb(0,128,220);
 }
 
+.btng{
+	width: 150px;
+	height: 30px
+}
 
+
+.table{
+	margin-left: 15%;
+	width: 70%;
+	border-radius: 10%;
+	background-color: rgb(40,40,40);
+	border: solid rgb(0,128,220);
+}
+
+td{
+	color: rgb(223,238,255);
+}
+
+.titulo{
+	color: rgb(0,128,220) !important;
+}
 
