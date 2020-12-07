@@ -19,4 +19,6 @@ public interface ProductoDAO extends GenericDAO<Producto, Integer> {
 	
 	public int obtenerCategoriaId(int producto);
 	
+	public List<Producto> buscarPorCateoria2(int catId);
+	
 }

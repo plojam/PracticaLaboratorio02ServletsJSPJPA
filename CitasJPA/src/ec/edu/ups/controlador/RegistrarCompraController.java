@@ -1,6 +1,7 @@
 package ec.edu.ups.controlador;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,9 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ec.edu.ups.dao.CabeceraDAO;
+import ec.edu.ups.dao.CategoriaDAO;
 import ec.edu.ups.dao.DAOFactory;
 import ec.edu.ups.dao.ProductoDAO;
 import ec.edu.ups.modelo.Cabecera;
+import ec.edu.ups.modelo.Categoria;
 import ec.edu.ups.modelo.Producto;
 
 /**
@@ -23,51 +26,77 @@ public class RegistrarCompraController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private ProductoDAO productoDao;
-    private List<Producto> listaProductos; 
+	private CategoriaDAO categoriaDao;
+    private List<Producto> listaProductos;
+    private List<Categoria> listaCategoria;
+    
+    
     
     private CabeceraDAO cabeceraDao;
     private Cabecera cabecera;
+    private Categoria categoria;
+    private Producto producto;
     int cont=0;
     
     public RegistrarCompraController() {
     	productoDao = DAOFactory.getFactory().getProductoDAO();
+    	categoriaDao = DAOFactory.getFactory().getCategoriaDAO();
     	
     	cabeceraDao = DAOFactory.getFactory().getCabeceraDAO();
     	cabecera = new Cabecera();
+    	categoria = new Categoria();
+    	producto = new Producto();
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = null;
 		int usuario_id = Integer.valueOf(request.getParameter("usuario_id"));
 		
-		System.out.println("ver id de user:  " + usuario_id);
-		
-		
 		int ultimo_id = cabeceraDao.ultimoCreado();
 		
-		System.out.println("ULTIMO CREADO : " + ultimo_id);
+		cont=ultimo_id+1;
+		cabecera.setId(cont);
+		cabecera.setEstado("e");
+		cabeceraDao.crear(cabecera, usuario_id);
+		System.out.println("CABECERA CREADA ");
+		System.out.println("id cab : " + cabecera.getId());
 		
+		listaCategoria = categoriaDao.find();
 		
+		/*
 		if (ultimo_id == 0) {
 			System.out.println("VERIFICAR EL IF ");
 		}else {
 		cont=ultimo_id+1;
 		cabecera.setId(cont);
 		cabecera.setEstado("e");
-		//cabeceraDao.crear(cabecera, usuario_id);
-		//MACAO DEBES REVISAR ESTE METODOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+		cabeceraDao.crear(cabecera, usuario_id);
 		System.out.println("CABECERA CREADA ");
 		System.out.println("id cab : " + cabecera.getId());
 		
 			
 		}
+		*/
 		
 		try {
-			
 			listaProductos = productoDao.find();
-			System.out.println("Tamaño de la lista recuperada: " + listaProductos.size());
+			List<Producto> listaProductos2 = new ArrayList<Producto>();
 			
-			request.setAttribute("listaProductos", listaProductos);
+			for (int i = 0; i<listaProductos.size(); i++ ) {
+				producto = listaProductos.get(i);
+				int id_cat = productoDao.categoriaId(producto.getId());
+				categoria = categoriaDao.read(id_cat);
+				producto.setCategoria(categoria);
+				
+				listaProductos2.add(new Producto (producto.getId(), producto.getNombre() , producto.getCantidad(), producto.getEstado(),
+						producto.getCategoria(), producto.getEmpresa()));	
+			}
+			
+			
+			
+			request.setAttribute("listaCategoria", listaCategoria);
+			
+			request.setAttribute("listaProductos2", listaProductos2);
 			request.setAttribute("usuario_id", usuario_id);
 			request.setAttribute("cabecera_id", cabecera.getId());
 			System.out.println("FINALIZA PRIMER SERBVLET");

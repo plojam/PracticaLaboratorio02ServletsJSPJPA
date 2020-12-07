@@ -2,6 +2,7 @@ package ec.edu.ups.jpa;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import ec.edu.ups.dao.ProductoDAO;
@@ -48,6 +49,15 @@ public class JPAProductoDAO extends JPAGenericDAO<Producto, Integer> implements 
 	
 	
 	
+	
+	
+	
+	public List<Producto> buscarPorCateoria2(int catId) {
+		
+		String jpql = "SELECT p FROM Producto p WHERE p.categoria.id=" + catId + " AND p.estado != 'e'";
+		List<Producto> list = em.createQuery(jpql).getResultList();
+		return list;
+	}
 	
 	
 	

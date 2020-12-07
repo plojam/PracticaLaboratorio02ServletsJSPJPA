@@ -43,7 +43,9 @@ public class JPACabeceraDAO extends JPAGenericDAO<Cabecera, Integer> implements 
 	
 	
 	
-	
+	public void crear(Cabecera cabecera, int usuarioId) {
+		String jpql = "INSERT Cabecera VALUES (0, '" + cabecera.getEstado() + "', " + usuarioId + ")";
+	}
 	
 	
 	

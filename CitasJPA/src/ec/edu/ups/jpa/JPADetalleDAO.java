@@ -23,7 +23,10 @@ public class JPADetalleDAO extends JPAGenericDAO<Detalle, Integer> implements De
 	
 	
 	
-	
+	public void crear(Detalle detalle, int cabeceraId, int productoId) {
+		String jpql = "INSERT Detalle VALUES (0, '" + detalle.getCantidad() + "', " + cabeceraId +","+ productoId + ")";
+		
+	}
 	
 	
 	public Detalle test2(int pro_id, int cab_id) {
@@ -32,8 +35,6 @@ public class JPADetalleDAO extends JPAGenericDAO<Detalle, Integer> implements De
 
 		return detalle;
 	}
-	
-	
 	
 	
 	public int obtenerProductoId(Detalle detalle) {
