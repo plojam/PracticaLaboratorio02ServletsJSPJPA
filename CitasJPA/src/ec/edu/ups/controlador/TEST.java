@@ -72,6 +72,9 @@ public class TEST extends HttpServlet {
 		String c = request.getParameter("cantidad");
 		String cat_nombre = request.getParameter("item2");
 		
+
+		
+		System.out.println("OBTENGO CABECERA   :   " + cabecera_id);
 		/*
 		System.out.println("OBTENGO CABECERA   :   " + cabecera_id);
 		System.out.println("OBTENGO USUARIO_ID   :   " + usuario_id);
@@ -148,6 +151,11 @@ public class TEST extends HttpServlet {
 			cab.addDetalles(det1);
 			usu.addCabeceras(cab);
 			usudao.update(usu);
+			
+			int ultimo_id = cabeceraDao.ultimoCreado();
+			cabecera_id = ultimo_id;
+			System.out.println("verificar *****  " +  cabecera_id);
+			
 			
 				listaProductos = productoDao.find();
 				List<Producto> listaProductos2 = new ArrayList<Producto>();

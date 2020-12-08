@@ -48,7 +48,14 @@ public class RegistrarCompraController extends HttpServlet {
 		String url = null;
 		int usuario_id = Integer.valueOf(request.getParameter("usuario_id"));
 		int ultimo_id = cabeceraDao.ultimoCreado();
-		cont=ultimo_id+1;
+		
+		if (ultimo_id == 0) {
+			cont=0;
+		}else {
+			cont=ultimo_id+1;
+		}
+		System.out.println("count  ** " + cont );
+		
 		cabecera.setId(cont);
 		cabecera.setEstado("e");
 		
@@ -72,11 +79,12 @@ public class RegistrarCompraController extends HttpServlet {
 						producto.getCategoria(), producto.getEmpresa()));	
 			}
 			
-			int count = cabecera.getId() +1;
+			
+			//int count = cabecera.getId() +1;
 			request.setAttribute("listaCategoria", listaCategoria);
 			request.setAttribute("listaProductos2", listaProductos2);
 			request.setAttribute("usuario_id", usuario_id);
-			request.setAttribute("cabecera_id", count);
+			request.setAttribute("cabecera_id", cabecera.getId());
 			//System.out.println("FINALIZA PRIMER SERBVLET");
 			url = "/JSPs/registrar_Compra.jsp";
 			

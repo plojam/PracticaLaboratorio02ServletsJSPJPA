@@ -28,8 +28,14 @@ public class JPACabeceraDAO extends JPAGenericDAO<Cabecera, Integer> implements 
 
 	public int ultimoCreado() {
 		String jpql = "SELECT max(c.id) FROM Cabecera c";
-		int catId = (int) em.createQuery(jpql).getSingleResult();
-		return catId;
+		try {
+			int catId = (int) em.createQuery(jpql).getSingleResult();
+			
+			return catId;
+		} catch (Exception e) {
+			System.out.println("Sin cabecera, manda a crear nueva");
+		}
+		return 0;
 	}
 
 
