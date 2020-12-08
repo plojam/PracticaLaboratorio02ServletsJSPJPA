@@ -26,11 +26,8 @@ public class ListarCompraController extends HttpServlet {
        
 	private CabeceraDAO cabeceraDao;
 	private DetalleDAO detalleDao;
-	
 	private List<Cabecera> listaCabeceraSinDelete;
-	
 	private List<Detalle> listaDetalle; 
-	
 	private Detalle detalle;
 	private Cabecera cabecera;
 	
@@ -45,11 +42,8 @@ public class ListarCompraController extends HttpServlet {
     
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
 		int usuario_id = Integer.valueOf(request.getParameter("usuario_id"));
-		
 		listaCabeceraSinDelete = cabeceraDao.listarSinDelete(usuario_id);
-		
 		List<Cabecera> listaCabeceraSinDelete2 = new ArrayList<Cabecera>();
 		
 		for (int i = 0; i<listaCabeceraSinDelete.size(); i++ ) {
@@ -66,20 +60,9 @@ public class ListarCompraController extends HttpServlet {
 				System.out.println("entra 3");
 				cabecera.setEstado("Rechazado");
 			}
-			System.out.println("estado ver ---  : " + cabecera.getEstado());
-			
-			// listaCabeceraSinDelete2.add(new Cabecera (cabecera.getId(), cabecera.getEstado(), cabecera.getDetalles() ));
-			
 			listaCabeceraSinDelete2.add(new Cabecera ( cabecera.getId(), cabecera.getEstado(), cabecera.getUsuario()));
 			
-			
-			System.out.println("ID FUNCIONAA ----  :  " + cabecera.getId());
-			
 		}
-		
-		System.out.println("tamaño listaaaaaaa  : " + listaCabeceraSinDelete2.size());
-		
-		
 		request.setAttribute("listaCabeceraSinDelete2", listaCabeceraSinDelete2);
 		request.setAttribute("usuario_id", usuario_id);
 		

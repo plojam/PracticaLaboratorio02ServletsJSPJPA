@@ -25,8 +25,6 @@ public class EliminarCompraController extends HttpServlet {
 	private List<Cabecera> listaCabecera; 
 	private Cabecera cabecera;
 	
-	
-	
     public EliminarCompraController() {
     	cabeceraDao = DAOFactory.getFactory().getCabeceraDAO();
     	cabecera = new Cabecera();
@@ -36,9 +34,7 @@ public class EliminarCompraController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int usuario_id = Integer.valueOf(request.getParameter("usuario_id"));
-		
 		listaCabecera = cabeceraDao.listarPorUsuario(usuario_id);
-		
 		List<Cabecera> listaCabecera2 = new ArrayList<Cabecera>();
 		
 		for (int i = 0; i<listaCabecera.size(); i++ ) {
@@ -54,12 +50,9 @@ public class EliminarCompraController extends HttpServlet {
 			}
 			
 			listaCabecera2.add(new Cabecera (cabecera.getId(), cabecera.getEstado(), cabecera.getUsuario()));
-			
-			System.out.println("ID FUNCIONAA ----  :  " + cabecera.getId());
+			//System.out.println("ID FUNCIONAA ----  :  " + cabecera.getId());
 			
 		}
-		
-		
 		listaCabecera = cabeceraDao.listarPorUsuario(usuario_id);
 		request.setAttribute("listaCabecera", listaCabecera2);
 		request.setAttribute("usuario_id", usuario_id);

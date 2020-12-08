@@ -22,8 +22,6 @@ public class BuscarUsuario extends HttpServlet {
 	private UsuarioDAO usuarioDao;
     private Usuario usuario;
 	
-	
-       
     public BuscarUsuario() {
     	usuarioDao = DAOFactory.getFactory().getUsuarioDAO();
     	usuario = new Usuario();
@@ -33,14 +31,9 @@ public class BuscarUsuario extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = null;
 			int usuario_id = Integer.valueOf(request.getParameter("usuario_id"));
-			
 			usuario = usuarioDao.read(usuario_id);
-			
-			
 			System.out.println("ver usuario regreso*****  : " + usuario.getId());
-			
 			request.setAttribute("usuario", usuario);
-			
 			
 			url = "/JSPs/perfilUser.jsp";
 		

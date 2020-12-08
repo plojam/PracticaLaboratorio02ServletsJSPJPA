@@ -27,22 +27,18 @@ public class EliminarCompraController2 extends HttpServlet {
 	
     public EliminarCompraController2() {
     	cabeceraDao = DAOFactory.getFactory().getCabeceraDAO();
-    	cabecera = new Cabecera();
-    	
+    	cabecera = new Cabecera();	
     }
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int usuario_id = Integer.valueOf(request.getParameter("usuario_id"));
 		int cab_id = Integer.valueOf(request.getParameter("id"));
-		
 		String estado = "D";
 		cabecera.setEstado(estado);
 		cabecera.setId(cab_id);
 		cabeceraDao.update(cabecera);
 		listaCabecera = cabeceraDao.listarPorUsuario(usuario_id);
-		
 		listaCabecera = cabeceraDao.listarPorUsuario(usuario_id);
-		
 		List<Cabecera> listaCabecera2 = new ArrayList<Cabecera>();
 		
 		for (int i = 0; i<listaCabecera.size(); i++ ) {
@@ -56,14 +52,9 @@ public class EliminarCompraController2 extends HttpServlet {
 			}else if( cabecera.getEstado().equals("R")){
 				cabecera.setEstado("Rechazado");
 			}
-			
 			listaCabecera2.add(new Cabecera (cabecera.getId(), cabecera.getEstado(), cabecera.getUsuario() ));
-			
-			System.out.println("ID FUNCIONAA ----  :  " + cabecera.getId());
-			
+			//System.out.println("ID FUNCIONAA ----  :  " + cabecera.getId());
 		}
-		
-		
 		request.setAttribute("listaCabecera", listaCabecera2);
 		request.setAttribute("usuario_id", usuario_id);
 		
@@ -73,19 +64,6 @@ public class EliminarCompraController2 extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		/*
-		int usuario_id = Integer.valueOf(request.getParameter("usuario_id"));
-		int cab_id = Integer.valueOf(request.getParameter("item"));
-		
-		String estado = "D";
-		cabecera.setEstado(estado);
-		cabecera.setId(cab_id);
-		cabeceraDao.update(cabecera);
-		listaCabecera = cabeceraDao.listarPorUsuario(usuario_id);
-		
-		request.setAttribute("listaCabecera", listaCabecera);
-		request.setAttribute("usuario_id", usuario_id);
-		*/
 		
 		getServletContext().getRequestDispatcher("/JSPs/eliminar_Compra.jsp").forward(request, response);
 	}

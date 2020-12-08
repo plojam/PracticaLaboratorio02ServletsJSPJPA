@@ -9,6 +9,7 @@ import com.mysql.cj.Query;
 
 import ec.edu.ups.dao.CabeceraDAO;
 import ec.edu.ups.modelo.Cabecera;
+import ec.edu.ups.modelo.Usuario;
 
 public class JPACabeceraDAO extends JPAGenericDAO<Cabecera, Integer> implements CabeceraDAO {
 
@@ -39,18 +40,6 @@ public class JPACabeceraDAO extends JPAGenericDAO<Cabecera, Integer> implements 
 	}
 	
 	
-	
-	
-	
-	
-	public void crear(Cabecera cabecera, int usuarioId) {
-		String jpql = "INSERT Cabecera VALUES (0, '" + cabecera.getEstado() + "', " + usuarioId + ")";
-	}
-	
-	
-	
-	
-	
 	public List<Cabecera> listarSinDelete(int usuarioId) {
 		String jpql = "SELECT c FROM Cabecera c WHERE c.usuario.id =" + usuarioId + " AND c.estado !='D'";
 		List<Cabecera> list = (List<Cabecera>) em.createQuery(jpql).getResultList();
@@ -58,7 +47,22 @@ public class JPACabeceraDAO extends JPAGenericDAO<Cabecera, Integer> implements 
 		return list;
 	}
 	
-
+	
+	public Cabecera buscarCabecera (int id) {
+		String jpql = "SELECT c FROM Cabecera c WHERE c.id= " + id ;
+		Cabecera cab = (Cabecera) em.createQuery(jpql).getSingleResult();
+		return cab;
+	}
+	
+	
+	/*
+	 	public Usuario buscarUsuario (int id) {
+		String jpql = "SELECT u FROM Usuario u WHERE u.id=" + id ;
+		Usuario usu = (Usuario) em.createQuery(jpql).getSingleResult();
+		return usu;
+	}
+	 * */
+	 
 	
 	
 	

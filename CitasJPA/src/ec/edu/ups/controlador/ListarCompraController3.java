@@ -53,35 +53,27 @@ public class ListarCompraController3 extends HttpServlet {
     	int usuario_id = Integer.valueOf(request.getParameter("usuario_id"));
 		int Cab = Integer.valueOf(request.getParameter("id"));
 		
-		System.out.println("llega user +++++++ "  + usuario_id);
-		System.out.println("llega cabecera id +++++++ "  + Cab);
+		//System.out.println("llega user +++++++ "  + usuario_id);
+		//System.out.println("llega cabecera id +++++++ "  + Cab);
 		
 		listaDetalle = detalleDao.buscarPorCabecera(Cab);
-		
-		
 		listaProductos = productoDao.find();
 		List<Detalle> listaDetalle2 = new ArrayList<Detalle>();
 		
 		for (int i = 0; i<listaDetalle.size(); i++ ) {
 			detalle = listaDetalle.get(i);
-			
 			int producto_id =  detalleDao.obtenerProductoId(detalle);
 			int cat_id = productoDao.obtenerCategoriaId(producto_id);
-			
 			producto = productoDao.TEST(producto_id);
-			
 			categoria = categoriaDao.read(cat_id);
-			
 			producto.setCategoria(categoria);
 			detalle.setProducto(producto);
 			
 			listaDetalle2.add(new Detalle (detalle.getId(), detalle.getCantidad() , detalle.getProducto(), detalle.getCabecera()));	
 		}
 		
-		
 		request.setAttribute("listaDetalle2", listaDetalle2);
 		request.setAttribute("usuario_id", usuario_id);
-		
 		
 		getServletContext().getRequestDispatcher("/JSPs/lista_Eliminar_Compra_Detalle.jsp").forward(request, response);
 	}
