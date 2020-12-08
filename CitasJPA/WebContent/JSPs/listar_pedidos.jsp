@@ -68,6 +68,7 @@
   		<% 
 			List<Cabecera> lista_C = (List<Cabecera>) request.getAttribute("cabeceras");
 			Cabecera cab;
+			Detalle deta;
 	  		
 			if(lista_C != null){
 				int usuS = (Integer) request.getAttribute("usuarioS_id");
@@ -75,28 +76,35 @@
 	   			for(int i = 0; i < lista_C.size(); i++){
 	   				cab = lista_C.get(i);
 	   				
-	   				out.println("<h1>Pedido " + (i+1) + "</h1>");
+	   				out.println("<h3 class='tema'>Pedido " + (i+1) + "</h3>");
 	   				
 	   				out.println("<table class='table' id='tabla_cabeceras'>" +
 	   				"<tr><td class='titulo'><strong>Numero</strong></td>" +
 	   				"<td class='titulo'><strong>Estado</strong></td></tr>");
 	   				
-	   				out.println("<tr><td>" + cab.getId() + "</td>" + 
-	   							"<td>" + cab.getEstado() + "</td></tr>");
+					if (cab.getEstado().equals("A")) {
+						cab.setEstado("Aceptado");
 						
-	   				out.println("<table class='table' id='tabla_detalles'><tr>" +
-   							"<td class='titulo'><strong>Codigo</strong></td>" +
+					}else if(cab.getEstado().equals("R")){
+						cab.setEstado("Rechazado");
+					}
+	   				
+	   				out.println("<tr><td>" + cab.getId() + "</td>" + 
+	   							"<td>" + cab.getEstado() + "</td></tr></table>");
+						
+	   				out.println("<table class='table' id='tabla_detalles'>" +
+   							"<tr><td class='titulo'><strong>Codigo</strong></td>" +
    							"<td class='titulo'><strong>Producto</strong></td>" +
    							"<td class='titulo'><strong>Cantidad</strong></td>" + 
    							"<td class='titulo'><strong>Categoria</strong></td></tr>");
 						
    					for (int j = 0; j < cab.getDetalles().size(); j++){
-   						Detalle control = cab.getDetalles().get(j);
+   						deta = cab.getDetalles().get(j);
    						
-   						out.println("<tr><td>" + control.getId() + "</td>");
-   		                out.println("<td>" + control.getProducto().getNombre() + "</td>");
-   		                out.println("<td>" + control.getCantidad() + "</td>");
-   		             	out.println("<td>" + control.getProducto().getCategoria().getNombre() + "</td></tr>");
+   						out.println("<tr><td>" + deta.getId() + "</td>");
+   		                out.println("<td>" + deta.getProducto().getNombre() + "</td>");
+   		                out.println("<td>" + deta.getCantidad() + "</td>");
+   		             	out.println("<td>" + deta.getProducto().getCategoria().getNombre() + "</td></tr>");
    	       			}	
    					out.println("</table>");
    				}

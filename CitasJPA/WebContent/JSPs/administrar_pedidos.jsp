@@ -73,7 +73,7 @@
 	  		
 			if(lista_C != null){
 				int usuS = (Integer) request.getAttribute("usuarioS_id");
-				out.println("<h1>Pedido</h1>");
+				out.println("<h1 class='tema'>Pedido</h1>");
 				
 	   			for(int i = 0; i < lista_C.size(); i++){
 	   				cab = lista_C.get(i);
@@ -85,17 +85,20 @@
 					"<td class='titulo'><strong>Aceptar</strong></td>" + 
 	   				"<td class='titulo'><strong>Denegar</strong></td></tr>");
 	   				
+	   				if(cab.getEstado().equals("e")) {
+						cab.setEstado("Espera");
+					}
+	   				
 	   				out.println("<tr><td>" + cab.getId() + "</td>" + 
 	   				"<td>" + cab.getEstado() + "</td>");
 	   				
-	   				/*out.println("<td><form action='/CitasJPA/ListarDetallesController' method='post'>" +
+	   				out.println("<td><form action='/CitasJPA/ListarDetallesController' method='post'>" +
 	   						"<input type='text' value='" + cab.getId() + "' name='cab_id' style='display:none'>" +
 	   						"<input type='text' name='usuarioS_id' value='" + usuS +"' style='display:none'>" +
 	   						"<input type='text' name='usuario_id' value='"+ usu + "' style='display:none'>" + 
 	   						"<input type='text' name='empresa_id' value='" + emp + "' style='display:none'>" +
 	   						"<input type='submit' value='Ver Detalle'></form></td>");
-	   				*/
-	   				out.println("<td><input type='button' value='Ver Detalle' onclick='mostrarTabla()'></td>");
+	   				
 	   				
 	   				out.println("<td><form action='/CitasJPA/ControlarPedidosController' method='post'>" +
 							"<input type='text' value='" + cab.getId() + "' name='cab_id' style='display:none'>" +
@@ -105,60 +108,44 @@
 							"<input type='text' name='empresa_id' value='" + emp + "' style='display:none'>" +
 							"<input type='submit' value='Aceptar'></form></td>");
 	   				
-	   				out.println("<td><form action=''/CitasJPA/ControlarPedidosController' method='post'>" +
+	   				out.println("<td><form action='/CitasJPA/ControlarPedidosController' method='post'>" +
 							"<input type='text' value='" + cab.getId() + "' name='cab_id' style='display:none'>" +
 							"<input type='text' name='usuarioS_id' value='" + usuS + "' style='display:none'>" +
 							"<input type='text' value='negado' name='estado' style='display:none'>" +
 							"<input type='text' name='usuario_id' value='" + usu + "' style='display:none'>" +
 							"<input type='text' name='empresa_id' value='" + emp + "' style='display:none'>" +
 							"<input type='submit' value='Denegar'></form></td></tr></table>");
-	   				
-   					out.println("<div id='detalles'>");
    			    
-   					out.println("<table class='table' id='tabla_detalles'><tr>" +
-   							"<td class='titulo'><strong>Codigo</strong></td>" +
-   							"<td class='titulo'><strong>Producto</strong></td>" +
-   							"<td class='titulo'><strong>Cantidad</strong></td>" + 
-   							"<td class='titulo'><strong>Categoria</strong></td></tr>");
-   					
-   					for (int j = 0; j < cab.getDetalles().size(); j++){
-   						Detalle control = cab.getDetalles().get(j);
-   						
-   						out.println("<tr><td>" + control.getId() + "</td>");
-   		                out.println("<td>" + control.getProducto().getNombre() + "</td>");
-   		                out.println("<td>" + control.getCantidad() + "</td>");
-   		             	out.println("<td>" + control.getProducto().getCategoria().getNombre() + "</td></tr>");
-   	       			}
-   					out.println("</table></div>");
    				}
    			}
 		%>	
     </div>
-    <!-- 
-    <div id="detalles" style='display:none'>
-		<%-- 
-			List<Detalle> lista_D = (List<Detalle>) request.getAttribute("detalles");
-		
-			if(lista_D != null){
-				
-				out.println("<h1>Detalles</h1>");
-		    
-				for (int i = 0; i < lista_D.size(); i++){
-					Detalle control = lista_D.get(i);
-					
-					out.println("<table id='tabla_detalles'><tr>" +
-						"<td><strong>Producto</strong></td>" +
-						"<td><strong>Cantidad</strong></td></tr>");
-					
-	                out.println("<tr><td>" + control.getProducto().getNombre() + "</td>");
-	                out.println("<td>" + control.getCantidad() + "</td></tr></table>");
-       			}
-			}
-
-        --%>
-    </div>
     
-     -->
+    <div id="detalle">
+		<% 
+			List<Detalle> lista_D = (List<Detalle>) request.getAttribute("detalles");
+			
+			if(lista_D != null){
+				out.println("<h1 class='tema'>Detalles</h1><table class='table' id='tabla_detalles'><tr>" +
+							"<td class='titulo'><strong>Codigo</strong></td>" +
+							"<td class='titulo'><strong>Producto</strong></td>" +
+							"<td class='titulo'><strong>Cantidad</strong></td>" +
+							"<td class='titulo'><strong>Categoria</strong></td></tr>");
+				
+				for (int i = 0; i < lista_D.size(); i++){
+					Detalle deta = lista_D.get(i);
+					
+					out.println("<tr><td>" + deta.getId() + "</td>");
+	                out.println("<td>" + deta.getProducto().getNombre() + "</td>");
+	                out.println("<td>" + deta.getCantidad() + "</td>");
+	                out.println("<td>" + deta.getProducto().getCategoria().getNombre() + "</td></tr>");
+       			}
+				
+				out.println("</table>");
+			}
+	                
+	        %>
+    </div>
     
     <form action="/CitasJPA/BuscarUsuarioAdmin" method="post">
     	<input type="text" name="emp_id" value="<%= emp %>" style="display:none">
